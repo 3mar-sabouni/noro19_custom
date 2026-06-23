@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_odoo_attendance_app_config_form" model="ir.ui.view">
+        <field name="name">odoo.attendance.app.config.form</field>
+        <field name="model">odoo.attendance.app.config</field>
+        <field name="arch" type="xml">
+            <form string="Attendance App Settings" create="0" delete="0">
+                <sheet>
+                    <group>
+                        <field name="checkin_project_required" widget="boolean_toggle" help="When enabled, selecting a project/analytic account is mandatory during check-in; when disabled, it becomes optional."/>
+                        <field name="task_project_required" widget="boolean_toggle" help="When enabled, selecting a project/analytic account is mandatory when creating tasks; when disabled, it becomes optional."/>
+                        <field name="checkin_note_required" widget="boolean_toggle" help="When enabled, entering a note is mandatory during check-in; when disabled, it becomes optional."/>
+                        <field name="checkout_note_required" widget="boolean_toggle" help="When enabled, entering a note is mandatory during check-out; when disabled, it becomes optional."/>
+                        <field name="selfie_retention_days" help="Delete selfie attachments older than this many days. Set to 0 to disable automatic deletion."/>
+                    </group>
+                    <group string="Messages">
+                        <field name="message_timezone" placeholder="Africa/Cairo"/>
+                        <field name="mobile_api_user_id" options="{'no_create': True}" help="Authenticated mobile API requests will run as this Odoo user instead of Public."/>
+                    </group>
+                <group string="Cleanup Schedule">
+                    <field name="cron_interval_number"/>
+                    <field name="cron_interval_type"/>
+                </group>
+                    <group string="Subscription Licensing">
+                        <field name="license_server_url" placeholder="https://license.yourdomain.com"/>
+                        <field name="license_key" password="True"/>
+                        <button name="action_check_license_now" type="object" string="Check License Now" class="oe_highlight"/>
+                        <separator string="Current Status"/>
+                        <field name="license_status" readonly="1"/>
+                        <field name="license_valid_until" readonly="1"/>
+                        <field name="license_last_check" readonly="1"/>
+                        <field name="license_employee_limit" readonly="1"/>
+                        <field name="license_employee_count" readonly="1"/>
+                        <field name="license_last_error" readonly="1"/>
+                    </group>
+                    <group string="Android Push (FCM)" col="2" colspan="2">
+                        <div class="alert alert-warning o_full_width" colspan="2" style="width:100%; max-width:none; white-space:normal;">
+                            <strong>Required for instant mobile notifications:</strong>
+                            Set <em>FCM Service Account JSON</em> (recommended) or Legacy Server Key.
+                            If both are empty, message send will be blocked.
+                        </div>
+                        <field name="fcm_project_id" placeholder="your-firebase-project-id"/>
+                        <field name="fcm_service_account_json" password="True" placeholder="Paste Firebase service account JSON here (recommended)." colspan="2"/>
+                        <separator string="Legacy (deprecated)"/>
+                        <field name="fcm_server_key" password="True" placeholder="Firebase server key (legacy - usually disabled)"/>
+                    </group>
+                    <group string="Setup Guide" col="1" colspan="2">
+                        <div class="alert alert-info o_full_width" style="width:100%; max-width:none; white-space:normal; padding:1.5rem;">
+                            <h3>Android Push (FCM)</h3>
+                            <p class="small text-muted">The old "Server Key" is deprecated. Please use the Service Account JSON.</p>
+                            <ol style="width:100%; max-width:none; white-space:normal;">
+                                <li>Open the Firebase Console and select your project (or create one).</li>
+                                <li>Click the Gear icon and go to Project Settings.</li>
+                                <li>Switch to the Service accounts tab.</li>
+                                <li>Click Generate new private key and confirm.</li>
+                                <li>Open the downloaded JSON file in a text editor and copy its contents.</li>
+                                <li>Paste the JSON into the FCM Service Account JSON field above.</li>
+                            </ol>
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_odoo_attendance_app_config" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">odoo.attendance.app.config</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create the settings record to manage selfie retention and cleanup scheduling.
+            </p>
+        </field>
+        <field name="context">{'default_selfie_retention_days': 60, 'default_cron_interval_number': 1, 'default_cron_interval_type': 'days', 'create': False, 'delete': False}</field>
+    </record>
+
+    <record id="action_odoo_attendance_app_config_open" model="ir.actions.server">
+        <field name="name">Settings</field>
+        <field name="model_id" ref="model_odoo_attendance_app_config"/>
+        <field name="state">code</field>
+        <field name="code">action = env['odoo.attendance.app.config'].action_open_settings()</field>
+    </record>
+</odoo>
+

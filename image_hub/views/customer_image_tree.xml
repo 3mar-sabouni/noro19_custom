@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_customer_image_list_timeline" model="ir.ui.view">
+        <field name="name">customer.image.list.timeline</field>
+        <field name="model">customer.image</field>
+        <field name="arch" type="xml">
+            <list default_order="date desc">
+                <field name="date"/>
+                <field name="category_id"/>
+                <field name="tag_ids"/>
+            </list>
+        </field>
+    </record>
+</odoo>

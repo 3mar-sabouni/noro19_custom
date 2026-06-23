@@ -1,0 +1,52 @@
+/* =========================================================
+   CLINIC CALENDAR – 30-MIN GRID (NO THIN LINES)
+   ========================================================= */
+
+/* 🔲 Base height per 30-minute slot */
+.o_calendar_view .fc-timegrid-slot {
+    height: 48px !important;
+    border-top: none !important;   /* ❌ remove thin lines */
+}
+
+/* ⏰ Strong hour separator (every 2 slots = 1 hour) */
+.o_calendar_view .fc-timegrid-slot:nth-child(2n) {
+    border-top: 2px solid #cfcfcf !important;
+}
+
+/* 🕘 Time labels (9, 9:30, 10, 10:30) */
+.o_calendar_view .fc-timegrid-axis-cushion {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 4px;
+}
+
+/* =========================================================
+   EVENT CLEANUP – NAME ONLY (NO TIME)
+   ========================================================= */
+
+/* ❌ Remove time text completely */
+.o_calendar_view .fc-event-time {
+    display: none !important;
+}
+
+/* 🔲 Event box */
+.o_calendar_view .fc-timegrid-event {
+    min-height: 42px;
+    padding: 6px 8px;
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* 🧾 Center content */
+.o_calendar_view .fc-event-main {
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* 🚫 Prevent overflow */
+.o_calendar_view .fc-timegrid-col-frame {
+    overflow: hidden !important;
+}

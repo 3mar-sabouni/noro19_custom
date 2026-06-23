@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer_image,access.customer.image,model_customer_image,,1,1,1,1
+access_customer_image_workspace,access.customer.image.workspace,model_customer_image_workspace,,1,1,1,1
+access_customer_image_category,access.customer.image.category,model_customer_image_category,,1,1,1,1
+access_customer_image_tag,access.customer.image.tag,model_customer_image_tag,,1,1,1,1
+access_customer_image_comparison,customer.image.comparison,model_customer_image_comparison,base.group_user,1,1,1,1
+access_customer_image_upload_wizard,access.customer.image.upload.wizard,model_customer_image_upload_wizard,,1,1,1,1

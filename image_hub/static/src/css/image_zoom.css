@@ -1,0 +1,66 @@
+/* =================================================
+   ONLY Comparison page Kanban (strict scope)
+   ================================================= */
+.comparison-kanban.o_kanban_view {
+    --KanbanRecord-width: 100% !important;
+    --KanbanRecord-margin-h: 0px;
+    --KanbanRecord-margin-v: 0px;
+}
+
+/* =================================================
+   2 BIG columns ONLY for Comparison
+   ================================================= */
+.comparison-kanban.o_kanban_view .o_kanban_renderer {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 0 16px;
+}
+
+/* =================================================
+   Kill default kanban record width (Comparison only)
+   ================================================= */
+.comparison-kanban.o_kanban_view .o_kanban_record {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: unset !important;
+}
+
+/* =================================================
+   BIG comparison card
+   ================================================= */
+.comparison-kanban.o_kanban_view .comparison-card {
+    width: 100%;
+    height: 650px;
+    border: 1px solid #dcdcdc;
+    border-radius: 16px;
+    background: #fff;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =================================================
+   Image fill
+   ================================================= */
+.comparison-kanban.o_kanban_view .o_field_image,
+.comparison-kanban.o_kanban_view img {
+    width: 100%;
+    height: 100%;
+}
+
+/* =================================================
+   Image behavior + zoom
+   ================================================= */
+.comparison-kanban.o_kanban_view img {
+    object-fit: contain;
+    transition: transform 0.35s ease;
+    transform-origin: center center;
+    cursor: zoom-in;
+}
+
+.comparison-kanban.o_kanban_view .comparison-card:hover img {
+    transform: scale(1.3);
+}

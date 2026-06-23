@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Simplified Analytic Account Form View (no attrs/states) -->
+    <record id="view_account_analytic_account_form_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.account.form.inherit</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="Mobile App Access">
+                    <field name="x_allow_all_employees"/>
+                    <field name="x_allowed_employee_ids" widget="many2many_tags"/>
+                    <field name="x_employee_count"/>
+                    <label for="x_allow_all_employees"/>
+                    <div class="text-muted">
+                        If left empty, all employees can use this analytic account in the mobile app.
+                    </div>
+                </group>
+                <group string="Check-in Geofence (optional)">
+                    <field name="x_enable_geofence"/>
+                    <field name="x_location_ids">
+                        <list editable="bottom">
+                            <field name="name" string="Location Name"/>
+                            <field name="latitude" string="Latitude"/>
+                            <field name="longitude" string="Longitude"/>
+                            <field name="radius_km" string="Allowed Radius (km)"/>
+                        </list>
+                    </field>
+                    <field name="x_geofence_exception_employee_ids" widget="many2many_tags"/>
+                    <div class="text-muted">
+                        Employees listed here are allowed to check-in/out even when the geofence is active.
+                    </div>
+                    <div class="text-muted">
+                        Enable geofence and set a radius &gt; 0 to restrict check-ins/outs to this area.
+                    </div>
+                </group>
+                <group string="Mobile Selfie Policy">
+                    <field name="x_selfie_policy_checkin"/>
+                    <field name="x_selfie_policy_checkout"/>
+                    <div class="text-muted">
+                        Set to Required to force selfie capture for this project.
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

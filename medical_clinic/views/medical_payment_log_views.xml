@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_account_payment_list_payment" model="ir.ui.view">
+        <field name="name">account.payment.list.patient</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Name</attribute>
+            </xpath>
+            <xpath expr="//field[@name='amount_company_currency_signed']" position="attributes">
+                <attribute name="string">Amount Paid</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="treatment_name" optional="hide"/>
+                <field name="treatment_cost" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='amount_company_currency_signed']" position="after">
+                <field name="amount_due" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_medical_payment_log" model="ir.actions.act_window">
+        <field name="name">Payment Logs</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Submenu: Invoices (next to Patients) -->
+    <menuitem
+            id="hospital_payment_info"
+            name="Payment Log"
+            parent="hospital_root_menu"
+            action="action_medical_payment_log"
+            sequence="5"
+    />
+</odoo>

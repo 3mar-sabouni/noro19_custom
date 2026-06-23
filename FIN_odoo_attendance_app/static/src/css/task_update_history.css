@@ -1,0 +1,31 @@
+.fin_task_update_history,
+.fin_task_update_history .o_field_x2many_list,
+.fin_task_update_history .o_list_renderer,
+.fin_task_update_history .o_list_renderer table {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+.fin_task_update_history .o_list_renderer table {
+    table-layout: fixed;
+}
+
+.fin_task_update_history .o_list_renderer table th,
+.fin_task_update_history .o_list_renderer table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.fin_task_update_history .o_list_renderer table td .o_field_widget,
+.fin_task_update_history .o_list_renderer table td .o_field_text,
+.fin_task_update_history .o_list_renderer table td .o_field_char,
+.fin_task_update_history .o_list_renderer table td .o_field_many2one {
+    justify-content: center;
+    text-align: center;
+}
+
+.fin_task_timeline_gantt .o_gantt_pill {
+    background-color: #143f86 !important;
+    border-color: #143f86 !important;
+    color: #ffffff !important;
+}

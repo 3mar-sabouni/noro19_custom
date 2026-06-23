@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_hr_employee_form_doctor" model="ir.ui.view">
+            <field name="name">hr.employee.form.doctor</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_email']" position="before">
+                    <field name="is_doctor"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="medical_staff_menu_action" model="ir.actions.act_window">
+            <field name="name">Staff</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <!-- MENU STRUCTURE -->
+        <menuitem id="hospital_root_menu" name="Medical Clinic" sequence="1"/>
+        <menuitem id="medical_staff" name="Staffs" parent="hospital_root_menu" sequence="15" action="medical_staff_menu_action"/>
+    </data>
+</odoo>

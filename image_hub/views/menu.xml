@@ -1,0 +1,35 @@
+<odoo>
+
+    <!-- ROOT MENU WITH ACTION -->
+    <menuitem
+        id="menu_root"
+        name="Image Hub"
+        action="action_workspace"
+        sequence="10"/>
+
+    <!-- WORKSPACE -->
+    <!-- <menuitem
+        id="menu_workspace"
+        parent="menu_root"
+        name="Workspace"
+        action="action_workspace"/> -->
+
+    <!-- CONFIG -->
+    <menuitem
+        id="menu_config"
+        parent="menu_root"
+        name="Configuration"/>
+
+    <menuitem
+        id="menu_categories"
+        parent="menu_config"
+        name="Categories"
+        action="action_category"/>
+
+    <menuitem
+        id="menu_tags"
+        parent="menu_config"
+        name="Tags"
+        action="action_tag"/>
+
+</odoo>

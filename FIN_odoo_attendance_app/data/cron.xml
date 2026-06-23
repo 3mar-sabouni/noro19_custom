@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_cleanup_attendance_selfies" model="ir.cron">
+        <field name="name">Attendance App: Cleanup old selfies</field>
+        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_cleanup_old_attendance_selfies()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="ir_cron_check_license" model="ir.cron">
+        <field name="name">Attendance App: Check license</field>
+        <field name="model_id" ref="model_odoo_attendance_app_config"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_license_check()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="ir_cron_send_scheduled_messages" model="ir.cron">
+        <field name="name">Attendance App: Send scheduled messages</field>
+        <field name="model_id" ref="model_odoo_attendance_inbox_message"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_send_scheduled_messages()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="active">True</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

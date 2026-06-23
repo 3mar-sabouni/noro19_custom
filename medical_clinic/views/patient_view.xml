@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form view for Medical Clinical Management -->
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.medical.clinical.management</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Adding Prescription, Teeth Chart, Payment Log buttons -->
+            <xpath expr="//button[@name='action_view_partner_invoices']" position="before">
+             <!-- Appointment Button -->
+            <button name="action_view_appointments"
+                class="oe_stat_button"
+                icon="fa-calendar"
+                type="object"
+                string="Appointments"
+                help="View all appointments of this patient"
+                invisible="not is_patient"/>
+              <button name="%(image_hub.action_workspace)d"
+        type="action"
+        class="oe_stat_button"
+        icon="fa-image"
+        string="Image Workspace"
+        context="{'default_partner_id': id ,'form_view_initial_mode': 'edit'}"
+        invisible="not is_patient"
+        help="Open the Image Workspace for this patient"/>
+
+
+
+
+                <button name="action_prescription" class="oe_stat_button" icon="fa-bars" string="Prescription"
+                        type="object" help="Prescription view of appointment" invisible="not is_patient"/>
+               
+                <button name="action_open_patient_payments" type="object" class="oe_stat_button" icon="fa-paperclip" string="Payment Log"
+                        help="View the patient's Treatment and Payment Log" invisible="not is_patient"/>
+            </xpath>
+
+            <!-- Replace default fields with patient-related fields -->
+            <xpath expr="//field[@name='function']" position="replace">
+                <field name="is_patient" string="Is Patient"/>
+                <field name="dob" string="Date of Birth"/>
+                <field name="patient_age" string="Age"/>
+                <field name="patient_no" string="Patient No." readonly="1"/>
+                <field name="gender" widget="radio" string="Gender"/>
+                <field name="source_id" string="Source"/>
+            </xpath>
+
+            <!-- SAFER: Add Medical Questionnaire and X-Ray Reports pages by inserting directly into the notebook -->
+            <xpath expr="//sheet/notebook" position="inside">
+                <!-- Medical Questionnaires page (One2many to medical.questionnaire) -->
+                <page string="Medical Questionnaires">
+                    <field name="medical_questionnaire_ids">
+                        <list editable="bottom">
+                            <field name="question_id"/>
+                            <field name="yes_no"/>
+                            <field name="reason"/>
+                        </list>
+                    </field>
+                </page>
+
+                <!-- X-Ray Reports -->
+                <!-- X-Ray Reports -->
+    <page string="X-Ray Reports" invisible="not is_patient">
+        <field name="report_ids" widget="kanban" options="{'no_create_edit': True}">
+            <kanban class="o_kanban_small_column">
+                <templates>
+                    <!-- Embedded Kanban template must be named "card" -->
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click o_kanban_card">
+                            <div class="d-flex align-items-start">
+                                <!-- Image Column -->
+                                <div class="me-2">
+                                     <field name="scan_image"
+                                    widget="image"
+                                    options="{'size': [64, 64], 'preview_image': 'scan_image'}"
+                                    class="o_kanban_image o_image_64_cover"/>
+
+
+                                </div>
+                                <!-- Details Column -->
+                                <div class="oe_kanban_details">
+                                    <strong>
+                                        <field name="image_filename"/>
+                                    </strong>
+                                    <div class="text-muted">
+                                        <field name="description"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>    
+            </kanban>
+        </field>
+    </page>
+
+
+
+
+            </xpath>
+
+           
+            <xpath expr="//field[@name='website']" position="attributes">
+                <attribute name="invisible">company_type == 'person'</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="attributes">
+                <attribute name="invisible">company_type == 'person'</attribute>
+            </xpath>
+
+            <!-- Hide pages related to sales, purchases, and accounting on patient -->
+            <xpath expr="//page[@name='sales_purchases']" position="attributes">
+                <attribute name="invisible">company_type == 'person'</attribute>
+            </xpath>
+            <xpath expr="//page[@name='accounting']" position="attributes">
+                <attribute name="invisible">company_type == 'person'</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Window Action for Patients -->
+    <record id="medical_patient_menu" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('is_patient','=',True)]</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Window Action for Invoices -->
+ <record id="action_patient_invoices" model="ir.actions.act_window">
+    <field name="name">Invoices</field>
+    <field name="res_model">account.move</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('move_type', '=', 'out_invoice')]</field>
+
+    <!-- Force Customer Invoice views -->
+    <field name="views">
+        [(ref('account.view_out_invoice_tree'), 'list'),
+         (ref('account.view_move_form'), 'form')]
+    </field>
+
+    <!-- Ensure the "New" button opens Customer Invoice form -->
+    <field name="context">{'default_move_type': 'out_invoice'}</field>
+</record>
+
+
+    <!-- Main Medical Clinic Menu (Root) -->
+    <menuitem id="hospital_root_menu" name="Medical Clinic" sequence="1"/>
+
+    <!-- Submenu: Patient Menu -->
+    <menuitem id="hospital_patient_info" name="Patient" parent="hospital_root_menu" action="medical_patient_menu" sequence="3"/>
+
+    <!-- Submenu: Invoices -->
+    <menuitem id="hospital_invoice_info" name="Invoices" parent="hospital_root_menu" action="action_patient_invoices" sequence="4"/>
+</odoo>

@@ -1,0 +1,73 @@
+/* ===============================
+   Customer Image Box (small)
+   =============================== */
+
+.customer_image_box {
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #f8f8f8;
+    border-radius: 6px;
+    position: relative;
+}
+
+.customer_image_box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    user-select: none;
+}
+
+/* ===============================
+   Comparison Layout
+   =============================== */
+
+.comparison_group {
+    display: flex;
+    gap: 24px;
+}
+
+/* Big comparison box */
+.comparison_box {
+    width: 350px;
+    height: 350px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+}
+
+/* Image inside comparison box */
+.comparison_box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: auto;
+    transform-origin: center center;
+    transition: transform 0.15s ease;
+}
+
+/* While dragging */
+.comparison_box img:active {
+    cursor: grabbing;
+}
+
+/* ===============================
+   Kanban Comparison (scoped)
+   =============================== */
+
+.comparison-kanban .comparison-card img {
+    cursor: grab;
+    user-select: none;
+    pointer-events: auto;
+    transform-origin: center center;
+}

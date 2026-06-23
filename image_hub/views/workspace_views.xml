@@ -1,0 +1,188 @@
+<odoo>
+    <record id="view_workspace_form" model="ir.ui.view">
+        <field name="name">customer.image.workspace.form</field>
+        <field name="model">customer.image.workspace</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group>
+                        <field name="partner_id" string="Patient" />
+                    </group>
+
+                     <button string="Bulk Upload Images"
+                        type="action"
+                        name="%(action_open_image_upload_wizard)d"
+                        class="btn-primary"/>
+
+                    <notebook>
+
+                        <!-- GALLERY -->
+                    <page string="Gallery">
+
+    <!-- FILTER BAR
+    <group col="4">
+        <field name="image_category_id"
+               placeholder="All Categories"
+               options="{'no_create': True}"/>
+
+        <button string="Clear Filter"
+                type="object"
+                name="action_apply_filter"
+                class="btn-primary"/>
+    </group> -->
+
+    <!-- IMAGE GALLERY -->
+    <field name="image_ids">
+
+        <kanban>
+            <field name="compare"/>
+            <field name="image_1920"/>
+            <templates>
+                <t t-name="card">
+                    <div class="o_kanban_card position-relative">
+
+                        <!-- TOGGLE -->
+                        <div class="o_compare_toggle">
+                            <field name="compare"
+                                   widget="boolean_toggle"/>
+                        </div>
+
+                        <!-- IMAGE -->
+                        <field name="image_1920"
+                               widget="image"
+                               class="img img-fluid"/>
+
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+
+    </field>
+
+</page>
+ <page string="Category Wise">
+
+    <!-- FILTER BAR -->
+    <group col="4">
+        <field name="image_category_id"
+               placeholder="All Categories"
+               options="{'no_create': True}"/>
+
+    </group>
+
+    <!-- IMAGE GALLERY -->
+    
+
+
+     <field name="filtered_image_ids">
+
+        <kanban>
+            <field name="compare"/>
+            <field name="image_1920"/>
+
+            <templates>
+                <t t-name="card">
+                    <div class="o_kanban_card position-relative">
+
+
+                        <!-- IMAGE -->
+                        <field name="image_1920"
+                               widget="image"
+                               class="img img-fluid"/>
+
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+
+    </field>
+
+</page>
+
+
+
+
+
+
+     <page string="Comparison">
+    <field name="compare_image_ids"
+           create="false"
+           edit="false"
+           readonly="1">
+
+        <kanban class="o_kanban_small_column comparison-zoom">
+            <field name="image_1920"/>
+
+            <templates>
+                <t t-name="card">
+                    <div class="o_kanban_card text-center">
+                        <field name="image_1920"
+                               widget="image"
+                               class="img img-fluid"/>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+
+    </field>
+</page>
+
+
+<page string="Edit Images">
+    <field name="compare_image_ids"
+           create="false"
+           edit="false"
+           readonly="1">
+
+        <kanban>
+            <field name="id"/>
+            <field name="image_1920"/>
+
+            <templates>
+                <t t-name="card">
+                    <div class="o_kanban_card text-center">
+
+                        <!-- IMAGE PREVIEW -->
+                        <field name="image_1920"
+                               widget="image"
+                               class="img img-fluid"/>
+
+                        <!-- EDIT BUTTON -->
+                     <a type="action"
+   name="%(image_hub.action_open_image_editor)d"
+   class="btn btn-link o_kanban_action"
+   context="{'image_id': id}">
+    ✏️ Edit
+</a>
+
+
+
+
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+
+    </field>
+</page>
+
+
+
+
+
+
+                        <!-- TIMELINE -->
+                        <page string="Timeline">
+                            <field name="image_ids"
+                                   domain="[('partner_id','=',partner_id)]"
+                                   context="{'list_view_ref': 'image_hub.view_customer_image_list_timeline'}"/>
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

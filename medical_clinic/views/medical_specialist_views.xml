@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  Tree View-->
+    <record id="medical_specialist_view_tree" model="ir.ui.view">
+            <field name="name">medical.specialist.view.tree</field>
+            <field name="model">medical.specialist</field>
+            <field name="arch" type="xml">
+                <list string="Specialized" editable="bottom">
+                    <field name="name" required="True"/>
+                    <field name="code" required="True"/>
+                </list>
+            </field>
+    </record>
+    <record id="medical_specialist_menu_action" model="ir.actions.act_window">
+        <field name="name">Specialized</field>
+        <field name="res_model">medical.specialist</field>
+        <field name="view_mode">list</field>
+    </record>
+     <menuitem id="hospital_root_menu" name="Medical Clinic" sequence="1"/>
+    <menuitem id="medical_configure" name="Configure" parent="hospital_root_menu" sequence="5"/>
+    <menuitem id="medical_specialist_menu" name="Specialist" parent="medical_configure" sequence="11"
+              action="medical_specialist_menu_action"/>
+
+</odoo>

@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_medical_admin_appointment,medical.admin.appointment,medical_clinic.model_medical_appointment,medical_clinic.group_medical_admin,1,1,1,1
+access_medical_admin_prescription,medical.admin.prescription,medical_clinic.model_medical_prescription,medical_clinic.group_medical_admin,1,1,1,1
+access_medical_admin_prescription_lines,medical.admin.prescription.lines,medical_clinic.model_medical_prescription_lines,medical_clinic.group_medical_admin,1,1,1,1
+access_medical_admin_time_shift,medical.admin.time.shift,medical_clinic.model_medical_time_shift,medical_clinic.group_medical_admin,1,1,1,1
+access_medical_admin_questionnaire,medical.admin.questionnaire,medical_clinic.model_medical_questionnaire,medical_clinic.group_medical_admin,1,1,1,1
+access_medical_admin_questions,medical.admin.questions,medical_clinic.model_medical_questions,medical_clinic.group_medical_admin,1,1,1,1
+access_medical_admin_treatment,medical.admin.treatment,medical_clinic.model_medical_treatment,medical_clinic.group_medical_admin,1,1,1,1
+access_medical_admin_xray_report,medical.admin.xray.report,medical_clinic.model_xray_report,medical_clinic.group_medical_admin,1,1,1,1
+access_medical_admin_specialist,medical.admin.specialist,medical_clinic.model_medical_specialist,medical_clinic.group_medical_admin,1,1,1,1
+access_medical_admin_treatment_category,medical.admin.treatment.category,model_treatment_category,medical_clinic.group_medical_admin,1,1,1,1
+access_medical_admin_medical_source,medical.admin.treatment.category,model_medical_source,medical_clinic.group_medical_admin,1,1,1,1

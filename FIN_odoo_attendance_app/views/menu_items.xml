@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Main Menu -->
+    <menuitem id="menu_odoo_attendance_root"
+              name="FIN Attendance"
+              sequence="100"
+              web_icon="FIN_odoo_attendance_app,static/description/icon.png"
+              groups="group_fin_attendance_manager,group_fin_attendance_user,base.group_system"/>
+    
+    <!-- Sub Menus -->
+    <menuitem id="menu_odoo_attendance_employees"
+              name="Mobile App Employees"
+              parent="menu_odoo_attendance_root"
+              action="action_odoo_attendance_employee"
+              sequence="10"
+              groups="group_fin_attendance_manager,base.group_system"/>
+
+    <!-- Fleet -->
+    <menuitem id="menu_odoo_attendance_fleet"
+              name="Fleet"
+              parent="menu_odoo_attendance_root"
+              sequence="12"
+              groups="group_fin_attendance_manager,group_fin_attendance_user,base.group_system"/>
+
+    <menuitem id="menu_odoo_attendance_fleet_dashboard"
+              name="Fleet Dashboard"
+              parent="menu_odoo_attendance_fleet"
+              action="action_fleet_dashboard"
+              sequence="1"
+              groups="group_fin_attendance_manager,group_fin_attendance_user,base.group_system"/>
+
+    <menuitem id="menu_odoo_attendance_vehicles"
+              name="Vehicles"
+              parent="menu_odoo_attendance_fleet"
+              action="action_odoo_attendance_vehicle"
+              sequence="2"
+              groups="group_fin_attendance_manager,group_fin_attendance_user,base.group_system"/>
+
+    <menuitem id="menu_odoo_attendance_trips"
+              name="Trips"
+              parent="menu_odoo_attendance_fleet"
+              action="action_fleet_trip"
+              sequence="3"
+              groups="group_fin_attendance_manager,group_fin_attendance_user,base.group_system"/>
+
+    <menuitem id="menu_odoo_attendance_sessions"
+              name="App Sessions"
+              parent="menu_odoo_attendance_root"
+              action="action_odoo_attendance_session"
+              sequence="20"
+              groups="group_fin_attendance_manager,base.group_system"/>
+
+    <menuitem id="menu_odoo_attendance_tasks"
+              name="Tasks"
+              parent="menu_odoo_attendance_root"
+              sequence="22"
+              groups="group_fin_attendance_manager,group_fin_attendance_user,base.group_system"/>
+
+    <menuitem id="menu_odoo_attendance_tasks_list"
+              name="Task List"
+              parent="menu_odoo_attendance_tasks"
+              action="action_fin_employee_tasks"
+              sequence="1"
+              groups="group_fin_attendance_manager,group_fin_attendance_user,base.group_system"/>
+
+    <menuitem id="menu_odoo_attendance_tasks_dashboard"
+              name="Task Status Dashboard"
+              parent="menu_odoo_attendance_tasks"
+              action="action_fin_employee_tasks_mobile_dashboard"
+              sequence="2"
+              groups="group_fin_attendance_manager,group_fin_attendance_user,base.group_system"/>
+
+    <menuitem id="menu_odoo_attendance_tasks_timeline"
+              name="Task Timeline"
+              parent="menu_odoo_attendance_tasks"
+              action="action_fin_employee_tasks_timeline"
+              sequence="3"
+              groups="group_fin_attendance_manager,group_fin_attendance_user,base.group_system"/>
+
+    <!-- Attendance -->
+    <menuitem id="menu_odoo_attendance_attendance"
+              name="Attendance"
+              parent="menu_odoo_attendance_root"
+              sequence="24"
+              groups="group_fin_attendance_manager,base.group_system"/>
+
+    <!-- Link to standard Attendances -->
+    <menuitem id="menu_odoo_attendance_hr_attendance"
+              name="View Attendances"
+              parent="menu_odoo_attendance_attendance"
+              action="hr_attendance.hr_attendance_action"
+              sequence="1"
+              groups="group_fin_attendance_manager,base.group_system"/>
+
+    <menuitem id="menu_odoo_attendance_config"
+              name="Settings"
+              parent="menu_odoo_attendance_root"
+              action="action_odoo_attendance_app_config_open"
+              sequence="90"
+              groups="group_fin_attendance_manager,base.group_system"/>
+
+    <menuitem id="menu_odoo_attendance_messages"
+              name="Messages"
+              parent="menu_odoo_attendance_root"
+              action="action_odoo_attendance_inbox_messages"
+              sequence="80"
+              groups="group_fin_attendance_manager,base.group_system"/>
+
+</odoo>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ir_attachment_checkout_gallery_tree" model="ir.ui.view">
+        <field name="name">ir.attachment.checkout.gallery.tree</field>
+        <field name="model">ir.attachment</field>
+        <field name="arch" type="xml">
+            <list string="Check-out Photos" create="0">
+                <field name="name"/>
+                <field name="mimetype"/>
+                <field name="create_date"/>
+                <field name="file_size"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_ir_attachment_checkout_gallery_kanban" model="ir.ui.view">
+        <field name="name">ir.attachment.checkout.gallery.kanban</field>
+        <field name="model">ir.attachment</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column" create="0">
+                <field name="datas"/>
+                <field name="mimetype"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="o_kanban_record" style="width: 260px; pointer-events: none;" t-att-data-id="record.id.value" data-model="ir.attachment">
+                            <div class="o_kanban_image"
+                                 style="width: 260px; height: 260px; overflow: hidden; background: #fff;">
+                                <img t-att-src="'data:%s;base64,%s' % ((record.mimetype.raw_value or 'image/jpeg'), (record.datas.raw_value or ''))"
+                                     style="width: 100%; height: 100%; object-fit: contain; display: block;"/>
+                            </div>
+                            <div class="o_kanban_details">
+                                <field name="name"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_ir_attachment_checkin_gallery_tree" model="ir.ui.view">
+        <field name="name">ir.attachment.checkin.gallery.tree</field>
+        <field name="model">ir.attachment</field>
+        <field name="arch" type="xml">
+            <list string="Check-in Photos" create="0">
+                <field name="name"/>
+                <field name="mimetype"/>
+                <field name="create_date"/>
+                <field name="file_size"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_ir_attachment_checkin_gallery_kanban" model="ir.ui.view">
+        <field name="name">ir.attachment.checkin.gallery.kanban</field>
+        <field name="model">ir.attachment</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column" create="0">
+                <field name="datas"/>
+                <field name="mimetype"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="o_kanban_record" style="width: 260px; pointer-events: none;" t-att-data-id="record.id.value" data-model="ir.attachment">
+                            <div class="o_kanban_image"
+                                 style="width: 260px; height: 260px; overflow: hidden; background: #fff;">
+                                <img t-att-src="'data:%s;base64,%s' % ((record.mimetype.raw_value or 'image/jpeg'), (record.datas.raw_value or ''))"
+                                     style="width: 100%; height: 100%; object-fit: contain; display: block;"/>
+                            </div>
+                            <div class="o_kanban_details">
+                                <field name="name"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

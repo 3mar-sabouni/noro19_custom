@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fin_employee_task_tree" model="ir.ui.view">
+        <field name="name">fin.employee.task.tree</field>
+        <field name="model">fin.employee.task</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="x_task_number"/>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="assignee_ids"/>
+                <field name="manager_id"/>
+                <field name="analytic_account_id"/>
+                <field name="target_start_date"/>
+                <field name="target_end_date"/>
+                <field name="progress"/>
+                <field name="status"/>
+                <field name="priority"/>
+                <field name="last_update_at"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_fin_employee_task_form" model="ir.ui.view">
+        <field name="name">fin.employee.task.form</field>
+        <field name="model">fin.employee.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_task_attachments" type="object" class="oe_stat_button" icon="fa-paperclip">
+                            <field name="task_attachment_count" widget="statinfo" string="Attachments"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="x_task_number" readonly="1"/>
+                            <field name="name"/>
+                            <field name="assignable_employee_ids" invisible="1"/>
+                            <field name="employee_id" domain="[('id', 'in', assignable_employee_ids)]"/>
+                            <field name="assignee_ids" widget="many2many_tags" domain="[('id', 'in', assignable_employee_ids)]"/>
+                            <field name="manager_id"/>
+                            <field name="analytic_account_id"/>
+                            <field name="priority"/>
+                            <field name="estimated_hours"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="target_start_date" widget="datetime"/>
+                            <field name="target_end_date" widget="datetime"/>
+                            <field name="progress"/>
+                            <field name="status" readonly="1"/>
+                            <field name="last_update_at" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                        <field name="update_note" placeholder="Latest update note"/>
+                        <separator string="Update History" colspan="2"/>
+                        <field name="update_history_ids" nolabel="1" readonly="1" colspan="2" class="fin_task_update_history">
+                            <list create="0" edit="0" delete="0">
+                                <field name="updated_at" width="180"/>
+                                <field name="updated_by_user_id" string="Updated By" width="220"/>
+                                <field name="progress" width="90"/>
+                                <field name="update_note" width="420"/>
+                                <field name="attachment_count" string="Files" width="70"/>
+                                <button name="action_download_attachments" type="object" string="Download" icon="fa-download"/>
+                                <button name="action_delete_attachments" type="object" string="Delete" icon="fa-trash" confirm="Delete all attachments for this update line?"/>
+                                <field name="updated_by_employee_id" optional="hide" width="220"/>
+                            </list>
+                        </field>
+                    </group>
+                    <notebook>
+                        <page string="Attachments">
+                            <button name="action_open_task_attachments" type="object" string="Select / Download / Delete" class="oe_highlight"/>
+                            <field name="task_attachment_ids" nolabel="1" readonly="1">
+                                <list create="0" edit="0" delete="0">
+                                    <field name="name"/>
+                                    <field name="mimetype"/>
+                                    <field name="create_date"/>
+                                    <field name="res_model" optional="hide"/>
+                                    <field name="res_id" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_fin_employee_task_search" model="ir.ui.view">
+        <field name="name">fin.employee.task.search</field>
+        <field name="model">fin.employee.task</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="assignee_ids"/>
+                <field name="manager_id"/>
+                <field name="analytic_account_id"/>
+                <filter string="Pending" name="pending" domain="[('status','=','pending')]"/>
+                <filter string="In Process" name="in_process" domain="[('status','=','in_process')]"/>
+                <filter string="Done" name="done" domain="[('status','=','done')]"/>
+                <filter string="Active" name="active" domain="[('active','=',True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_fin_employee_task_dashboard_report_search" model="ir.ui.view">
+        <field name="name">fin.employee.task.dashboard.report.search</field>
+        <field name="model">fin.employee.task.dashboard.report</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="analytic_account_id"/>
+                <field name="primary_employee_id"/>
+                <field name="assignee_employee_id"/>
+                <field name="employee_id"/>
+                <field name="status"/>
+                <field name="target_start_date"/>
+                <field name="target_end_date"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_fin_employee_task_dashboard_report_graph" model="ir.ui.view">
+        <field name="name">fin.employee.task.dashboard.report.graph</field>
+        <field name="model">fin.employee.task.dashboard.report</field>
+        <field name="arch" type="xml">
+            <graph string="Task Progress Dashboard" type="bar" stacked="False" js_class="task_status_graph">
+                <field name="analytic_account_id" type="row"/>
+                <field name="status" type="col"/>
+                <field name="progress_pct" type="measure" string="Average Progress (%)" operator="avg"/>
+                <field name="task_count" type="measure" string="Tasks"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_fin_employee_task_dashboard_report_pivot" model="ir.ui.view">
+        <field name="name">fin.employee.task.dashboard.report.pivot</field>
+        <field name="model">fin.employee.task.dashboard.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Task Progress Matrix">
+                <field name="analytic_account_id" type="row"/>
+                <field name="employee_id" type="row"/>
+                <field name="status" type="col"/>
+                <field name="progress_pct" type="measure" string="Average Progress (%)" operator="avg"/>
+                <field name="task_count" type="measure" string="Tasks"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_fin_employee_task_dashboard_report_tree" model="ir.ui.view">
+        <field name="name">fin.employee.task.dashboard.report.list</field>
+        <field name="model">fin.employee.task.dashboard.report</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0">
+                <field name="task_id"/>
+                <field name="analytic_account_id"/>
+                <field name="primary_employee_id"/>
+                <field name="assignee_employee_id"/>
+                <field name="manager_id" optional="hide"/>
+                <field name="status" widget="badge" decoration-danger="status == 'pending'" decoration-warning="status == 'in_process'" decoration-success="status == 'done'"/>
+                <field name="progress_pct" string="Progress (%)"/>
+                <field name="target_start_date"/>
+                <field name="target_end_date"/>
+                <field name="last_update_at" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_fin_employee_task_pivot" model="ir.ui.view">
+        <field name="name">fin.employee.task.pivot</field>
+        <field name="model">fin.employee.task</field>
+        <field name="arch" type="xml">
+            <pivot string="Task Analysis">
+                <field name="status" type="row"/>
+                <field name="manager_id" type="col"/>
+                <field name="id" type="measure" string="Tasks"/>
+                <field name="progress_avg" type="measure" string="Progress (%)"/>
+                <field name="estimated_hours" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_fin_employee_task_timeline_gantt" model="ir.ui.view">
+        <field name="name">fin.employee.task.timeline.gantt</field>
+        <field name="model">fin.employee.task</field>
+        <field name="arch" type="xml">
+            <gantt
+                class="fin_task_timeline_gantt"
+                string="Task Timeline"
+                date_start="target_start_date"
+                date_stop="target_end_date"
+                default_group_by="employee_id"
+                default_scale="week"
+                scales="day,week,month,year"
+                progress="progress"
+            >
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="manager_id"/>
+                <field name="analytic_account_id"/>
+                <field name="status"/>
+                <field name="priority"/>
+            </gantt>
+        </field>
+    </record>
+
+    <record id="action_fin_employee_tasks" model="ir.actions.act_window">
+        <field name="name">Employee Tasks</field>
+        <field name="res_model">fin.employee.task</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_fin_employee_task_search"/>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="action_fin_employee_tasks_mobile_dashboard" model="ir.actions.client">
+        <field name="name">Task Status Dashboard</field>
+        <field name="tag">odoo_attendance_app.task_dashboard</field>
+        <field name="target">current</field>
+    </record>
+
+    <record id="action_fin_employee_tasks_dashboard" model="ir.actions.act_window">
+        <field name="name">Task Status Dashboard Report</field>
+        <field name="res_model">fin.employee.task.dashboard.report</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="views" eval="[(ref('view_fin_employee_task_dashboard_report_graph'), 'graph'), (ref('view_fin_employee_task_dashboard_report_pivot'), 'pivot'), (ref('view_fin_employee_task_dashboard_report_tree'), 'list')]"/>
+        <field name="search_view_id" ref="view_fin_employee_task_dashboard_report_search"/>
+        <field name="context">{'graph_measure': 'progress_pct'}</field>
+    </record>
+
+    <record id="action_fin_employee_tasks_timeline" model="ir.actions.act_window">
+        <field name="name">Task Timeline</field>
+        <field name="res_model">fin.employee.task</field>
+        <field name="view_mode">gantt,list,form</field>
+        <field name="views" eval="[(ref('view_fin_employee_task_timeline_gantt'), 'gantt'), (ref('view_fin_employee_task_tree'), 'list'), (ref('view_fin_employee_task_form'), 'form')]"/>
+        <field name="search_view_id" ref="view_fin_employee_task_search"/>
+        <field name="context">{'search_default_active': 1, 'group_by': 'employee_id'}</field>
+    </record>
+</odoo>

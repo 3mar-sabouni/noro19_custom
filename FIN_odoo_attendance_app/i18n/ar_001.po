@@ -1,0 +1,1291 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* FIN_odoo_attendance_app
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-22 00:00+0000\n"
+"PO-Revision-Date: 2026-02-22 00:00+0000\n"
+"Last-Translator: FIN Team\n"
+"Language-Team: Arabic\n"
+"Language: ar_001\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.module.module,shortdesc:FIN_odoo_attendance_app.module_meta_information
+msgid "FIN Attendance"
+msgstr "حضور FIN"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_root
+msgid "FIN Attendance"
+msgstr "حضور FIN"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_employees
+msgid "Mobile App Employees"
+msgstr "موظفو تطبيق الجوال"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_fleet
+msgid "Fleet"
+msgstr "الأسطول"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_vehicles
+msgid "Vehicles"
+msgstr "المركبات"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_trips
+msgid "Trips"
+msgstr "الرحلات"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_sessions
+msgid "App Sessions"
+msgstr "جلسات التطبيق"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_tasks
+msgid "Tasks"
+msgstr "المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_tasks_list
+msgid "Task List"
+msgstr "قائمة المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_tasks_dashboard
+msgid "Task Status Dashboard"
+msgstr "لوحة حالة المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_tasks_timeline
+msgid "Task Timeline"
+msgstr "الخط الزمني للمهام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_attendance
+msgid "Attendance"
+msgstr "الحضور"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_live_employees_map
+msgid "Live Map"
+msgstr "الخريطة المباشرة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_hr_attendance
+msgid "View Attendances"
+msgstr "عرض سجلات الحضور"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_far_away_alerts
+msgid "Far-away Alerts"
+msgstr "تنبيهات البعد"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_config
+msgid "Settings"
+msgstr "الإعدادات"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.ui.menu,name:FIN_odoo_attendance_app.menu_odoo_attendance_messages
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_odoo_attendance_employee
+msgid "Mobile App Employees"
+msgstr "موظفو تطبيق الجوال"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_odoo_attendance_session
+msgid "App Sessions"
+msgstr "جلسات التطبيق"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_fin_employee_tasks
+msgid "Employee Tasks"
+msgstr "مهام الموظفين"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_fin_employee_tasks_dashboard
+msgid "Task Status Dashboard"
+msgstr "لوحة حالة المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_fin_employee_tasks_timeline
+msgid "Task Timeline"
+msgstr "الخط الزمني للمهام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_odoo_attendance_vehicle
+msgid "Fleet Vehicles"
+msgstr "مركبات الأسطول"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_fleet_trip
+msgid "Trips"
+msgstr "الرحلات"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_odoo_attendance_far_away_results
+msgid "Far-away Alerts"
+msgstr "تنبيهات البعد"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_odoo_attendance_app_config
+msgid "Settings"
+msgstr "الإعدادات"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.server,name:FIN_odoo_attendance_app.action_odoo_attendance_app_config_open
+msgid "Settings"
+msgstr "الإعدادات"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_odoo_attendance_inbox_messages
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_employee_list
+msgid "Mobile App Employees"
+msgstr "موظفو تطبيق الجوال"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_employee_form
+msgid "Mobile App Employee"
+msgstr "موظف تطبيق الجوال"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_employee_search
+msgid "Search Mobile App Employees"
+msgstr "البحث في موظفي تطبيق الجوال"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_employee_search
+msgid "Active"
+msgstr "نشط"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_employee_search
+msgid "Inactive"
+msgstr "غير نشط"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_employee_search
+msgid "Device Bound"
+msgstr "مرتبط بجهاز"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_employee_search
+msgid "No Device"
+msgstr "بدون جهاز"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_employee__username
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_employee__employee_id
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_employee__is_driver
+msgid "Is Driver"
+msgstr "هو سائق"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_employee__manager_employee_ids
+msgid "Manager"
+msgstr "المدير"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_employee__selfie_policy_checkin
+msgid "Check-in Selfie"
+msgstr "سيلفي تسجيل الدخول"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_employee__selfie_policy_checkout
+msgid "Check-out Selfie"
+msgstr "سيلفي تسجيل الخروج"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_employee__device_id
+msgid "Device ID"
+msgstr "معرف الجهاز"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_employee__is_active
+msgid "Active"
+msgstr "نشط"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_employee__last_login
+msgid "Last Login"
+msgstr "آخر تسجيل دخول"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_employee__selfie_policy_checkin__optional
+msgid "Optional"
+msgstr "اختياري"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_employee__selfie_policy_checkin__required
+msgid "Required"
+msgstr "إلزامي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_employee__selfie_policy_checkout__optional
+msgid "Optional"
+msgstr "اختياري"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_employee__selfie_policy_checkout__required
+msgid "Required"
+msgstr "إلزامي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_app_config__checkin_project_required
+msgid "Require Project on Check-In"
+msgstr "إلزام المشروع عند تسجيل الدخول"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_app_config__task_project_required
+msgid "Require Project on New Tasks"
+msgstr "إلزام المشروع في المهام الجديدة"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_app_config_form
+msgid "Attendance App Settings"
+msgstr "إعدادات تطبيق الحضور"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_app_config_form
+msgid ""
+"When enabled, selecting a project/analytic account is mandatory during "
+"check-in; when disabled, it becomes optional."
+msgstr ""
+"عند التفعيل، يكون اختيار المشروع/الحساب التحليلي إلزامياً أثناء تسجيل "
+"الدخول، وعند التعطيل يصبح اختيارياً."
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_app_config_form
+msgid ""
+"When enabled, selecting a project/analytic account is mandatory when "
+"creating tasks; when disabled, it becomes optional."
+msgstr ""
+"عند التفعيل، يكون اختيار المشروع/الحساب التحليلي إلزامياً عند إنشاء المهام، "
+"وعند التعطيل يصبح اختيارياً."
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model,name:FIN_odoo_attendance_app.model_fin_employee_task
+msgid "Employee Task"
+msgstr "مهمة الموظف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model,name:FIN_odoo_attendance_app.model_fin_employee_task_update
+msgid "Employee Task Update"
+msgstr "تحديث مهمة الموظف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model,name:FIN_odoo_attendance_app.model_fin_employee_task_dashboard_report
+msgid "Task Dashboard Report"
+msgstr "تقرير لوحة المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__x_task_number
+msgid "Task Number"
+msgstr "رقم المهمة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__name
+msgid "Title"
+msgstr "عنوان المهمة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__description
+msgid "Description"
+msgstr "الوصف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__employee_id
+msgid "Primary Employee"
+msgstr "الموظف الأساسي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__assignee_ids
+msgid "Assignees"
+msgstr "المكلّفون"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,help:FIN_odoo_attendance_app.field_fin_employee_task__assignee_ids
+msgid "Employees assigned to this task (shared progress)."
+msgstr "الموظفون المكلّفون بهذه المهمة (تقدم مشترك)."
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__manager_id
+msgid "Assigned By"
+msgstr "أُسندت بواسطة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__analytic_account_id
+msgid "Analytic Account"
+msgstr "الحساب التحليلي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__target_start_date
+msgid "Target Start Date"
+msgstr "تاريخ البدء المستهدف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__target_end_date
+msgid "Target End Date"
+msgstr "تاريخ الانتهاء المستهدف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__progress
+msgid "Progress (%)"
+msgstr "التقدم (%)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__progress_avg
+msgid "Progress (%)"
+msgstr "التقدم (%)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__progress_target
+msgid "Progress Target"
+msgstr "هدف التقدم"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__status
+msgid "Status"
+msgstr "الحالة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__last_update_at
+msgid "Last Update At"
+msgstr "آخر تحديث في"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__update_note
+msgid "Update Note"
+msgstr "ملاحظة التحديث"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__update_history_ids
+msgid "Update History"
+msgstr "سجل التحديثات"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__priority
+msgid "Priority"
+msgstr "الأولوية"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__estimated_hours
+msgid "Estimated Hours"
+msgstr "الساعات المقدرة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task__status__pending
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task__status__in_process
+msgid "In Process"
+msgstr "قيد التنفيذ"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task__status__done
+msgid "Done"
+msgstr "مكتمل"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task__priority__low
+msgid "Low"
+msgstr "منخفض"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task__priority__medium
+msgid "Medium"
+msgstr "متوسط"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task__priority__high
+msgid "High"
+msgstr "عال"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_update__task_id
+msgid "Task"
+msgstr "المهمة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_update__updated_at
+msgid "Updated At"
+msgstr "تم التحديث في"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_update__progress
+msgid "Progress (%)"
+msgstr "التقدم (%)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_update__update_note
+msgid "Update Note"
+msgstr "ملاحظة التحديث"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_update__updated_by_employee_id
+msgid "Updated By (Employee)"
+msgstr "تم التحديث بواسطة (الموظف)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_update__updated_by_user_id
+msgid "Updated By (User)"
+msgstr "تم التحديث بواسطة (المستخدم)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__task_id
+msgid "Task"
+msgstr "المهمة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__analytic_account_id
+msgid "Analytic Account"
+msgstr "الحساب التحليلي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__primary_employee_id
+msgid "Primary Employee"
+msgstr "الموظف الأساسي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__assignee_employee_id
+msgid "Assignee"
+msgstr "المكلّف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__employee_id
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__manager_id
+msgid "Assigned By"
+msgstr "أُسندت بواسطة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__status
+msgid "Status"
+msgstr "الحالة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__progress_pct
+msgid "Average Progress (%)"
+msgstr "متوسط التقدم (%)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__task_count
+msgid "Tasks"
+msgstr "المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__target_start_date
+msgid "Target Start Date"
+msgstr "تاريخ البدء المستهدف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__target_end_date
+msgid "Target End Date"
+msgstr "تاريخ الانتهاء المستهدف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__last_update_at
+msgid "Last Update At"
+msgstr "آخر تحديث في"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_fin_employee_task_dashboard_report__priority
+msgid "Priority"
+msgstr "الأولوية"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task_dashboard_report__status__pending
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task_dashboard_report__status__in_process
+msgid "In Process"
+msgstr "قيد التنفيذ"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task_dashboard_report__status__done
+msgid "Done"
+msgstr "مكتمل"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task_dashboard_report__priority__low
+msgid "Low"
+msgstr "منخفض"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task_dashboard_report__priority__medium
+msgid "Medium"
+msgstr "متوسط"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__fin_employee_task_dashboard_report__priority__high
+msgid "High"
+msgstr "عال"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_form
+msgid "Latest update note"
+msgstr "آخر ملاحظة تحديث"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_form
+msgid "Update History"
+msgstr "سجل التحديثات"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_search
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_search
+msgid "In Process"
+msgstr "قيد التنفيذ"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_search
+msgid "Done"
+msgstr "مكتمل"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_search
+msgid "Active"
+msgstr "نشط"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_dashboard_report_graph
+msgid "Task Progress Dashboard"
+msgstr "لوحة تقدم المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_dashboard_report_graph
+msgid "Average Progress (%)"
+msgstr "متوسط التقدم (%)"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_dashboard_report_graph
+msgid "Tasks"
+msgstr "المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_dashboard_report_pivot
+msgid "Task Progress Matrix"
+msgstr "مصفوفة تقدم المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_dashboard_report_pivot
+msgid "Average Progress (%)"
+msgstr "متوسط التقدم (%)"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_dashboard_report_pivot
+msgid "Tasks"
+msgstr "المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_dashboard_report_tree
+msgid "Progress (%)"
+msgstr "التقدم (%)"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_pivot
+msgid "Task Analysis"
+msgstr "تحليل المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_pivot
+msgid "Tasks"
+msgstr "المهام"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_pivot
+msgid "Progress (%)"
+msgstr "التقدم (%)"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fin_employee_task_timeline_gantt
+msgid "Task Timeline"
+msgstr "الخط الزمني للمهام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model,name:FIN_odoo_attendance_app.model_odoo_attendance_vehicle
+msgid "FIN Attendance Vehicle"
+msgstr "مركبة حضور FIN"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model,name:FIN_odoo_attendance_app.model_odoo_attendance_fleet_trip
+msgid "Fleet Trip Management"
+msgstr "إدارة رحلات الأسطول"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model,name:FIN_odoo_attendance_app.model_odoo_attendance_far_away_result
+msgid "Far-away Alert Result"
+msgstr "نتيجة تنبيه البُعد"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model,name:FIN_odoo_attendance_app.model_odoo_attendance_inbox_message
+msgid "Attendance App Inbox Message"
+msgstr "رسالة علبة وارد تطبيق الحضور"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model,name:FIN_odoo_attendance_app.model_odoo_attendance_inbox_recipient
+msgid "Attendance App Inbox Recipient"
+msgstr "مستلم علبة الوارد لتطبيق الحضور"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__name
+msgid "Vehicle Name"
+msgstr "اسم المركبة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__license_plate
+msgid "License Plate"
+msgstr "لوحة المرور"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__current_kilometrage
+msgid "Current Kilometrage"
+msgstr "العداد الحالي (كم)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__vehicle_type
+msgid "Vehicle Type"
+msgstr "نوع المركبة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__vehicle_status
+msgid "Vehicle Status"
+msgstr "حالة المركبة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__last_maintenance_kilometrage
+msgid "Last Maintenance Kilometrage"
+msgstr "عداد آخر صيانة (كم)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__vehicle_specifications
+msgid "Vehicle Specifications"
+msgstr "مواصفات المركبة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__fuel_type
+msgid "Fuel Type"
+msgstr "نوع الوقود"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__purchase_date
+msgid "Purchase Date"
+msgstr "تاريخ الشراء"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__vin_number
+msgid "VIN Number"
+msgstr "رقم VIN"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_vehicle__allowed_employee_ids
+msgid "Allowed Drivers"
+msgstr "السائقون المسموح لهم"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__vehicle_type__car
+msgid "Car"
+msgstr "سيارة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__vehicle_type__truck
+msgid "Truck"
+msgstr "شاحنة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__vehicle_type__van
+msgid "Van"
+msgstr "فان"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__vehicle_type__motorcycle
+msgid "Motorcycle"
+msgstr "دراجة نارية"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__vehicle_status__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__vehicle_status__in_maintenance
+msgid "In Maintenance"
+msgstr "قيد الصيانة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__vehicle_status__retired
+msgid "Retired"
+msgstr "متقاعد"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__fuel_type__petrol
+msgid "Petrol"
+msgstr "بنزين"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__fuel_type__diesel
+msgid "Diesel"
+msgstr "ديزل"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__fuel_type__electric
+msgid "Electric"
+msgstr "كهربائي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_vehicle__fuel_type__hybrid
+msgid "Hybrid"
+msgstr "هجين"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__name
+msgid "Trip Reference"
+msgstr "مرجع الرحلة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__trip_start_date_time
+msgid "Trip Start"
+msgstr "بداية الرحلة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__trip_end_date_time
+msgid "Trip End"
+msgstr "نهاية الرحلة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__driver_employee_app_id
+msgid "Driver (Mobile App)"
+msgstr "السائق (تطبيق الجوال)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__driver_user_id
+msgid "Driver"
+msgstr "السائق"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__vehicle_id
+msgid "Vehicle"
+msgstr "المركبة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__analytic_account_id
+msgid "Analytic Account"
+msgstr "الحساب التحليلي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__start_google_maps_location
+msgid "Start Location"
+msgstr "موقع البداية"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__end_google_maps_location
+msgid "End Location"
+msgstr "موقع النهاية"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__start_kilometrage
+msgid "Start Kilometrage"
+msgstr "العداد عند البداية"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__end_kilometrage
+msgid "End Kilometrage"
+msgstr "العداد عند النهاية"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__kilometrage_difference
+msgid "Distance Travelled"
+msgstr "المسافة المقطوعة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_fleet_trip__state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_fleet_trip__state__in_progress
+msgid "In Progress"
+msgstr "قيد التنفيذ"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_fleet_trip__state__completed
+msgid "Completed"
+msgstr "مكتملة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_fleet_trip__state__cancelled
+msgid "Cancelled"
+msgstr "ملغاة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__timestamp
+msgid "Detected At"
+msgstr "تم الاكتشاف في"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__employee_app_id
+msgid "App Account"
+msgstr "حساب التطبيق"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__allowed_radius_km
+msgid "Allowed Radius (km)"
+msgstr "نطاق السماح (كم)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__actual_distance_km
+msgid "Actual Distance (km)"
+msgstr "المسافة الفعلية (كم)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__excess_km
+msgid "Exceeded By (km)"
+msgstr "تجاوز بمقدار (كم)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__project_latitude
+msgid "Project Latitude"
+msgstr "خط عرض المشروع"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__project_longitude
+msgid "Project Longitude"
+msgstr "خط طول المشروع"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__current_latitude
+msgid "Current Latitude"
+msgstr "خط العرض الحالي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__current_longitude
+msgid "Current Longitude"
+msgstr "خط الطول الحالي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__location_timestamp
+msgid "Employee Location Timestamp"
+msgstr "طابع زمني لموقع الموظف"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_far_away_result__current_location_url
+msgid "Current Location"
+msgstr "الموقع الحالي"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__name
+msgid "Subject"
+msgstr "الموضوع"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__body
+msgid "Message"
+msgstr "الرسالة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__message_type
+msgid "Type"
+msgstr "النوع"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__target_all
+msgid "Send to all active employees"
+msgstr "إرسال إلى جميع الموظفين النشطين"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__target_employee_app_ids
+msgid "Target Employees"
+msgstr "الموظفون المستهدفون"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__scheduled_at
+msgid "Scheduled At"
+msgstr "مجدول في"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__sent_at
+msgid "Sent At"
+msgstr "تم الإرسال في"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__send_mode
+msgid "Send Mode"
+msgstr "وضع الإرسال"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_enabled
+msgid "Repeat Message"
+msgstr "تكرار الرسالة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_group_id
+msgid "Repeat Group"
+msgstr "مجموعة التكرار"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_time
+msgid "Repeat Time"
+msgstr "وقت التكرار"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_time_hhmm
+msgid "Repeat Time (HH:MM)"
+msgstr "وقت التكرار (HH:MM)"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__recipient_ids
+msgid "Recipients"
+msgstr "المستلمون"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__recipient_count
+msgid "Recipients"
+msgstr "المستلمون"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__read_count
+msgid "Read"
+msgstr "مقروء"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__unread_count
+msgid "Unread"
+msgstr "غير مقروء"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_inbox_message__message_type__broadcast
+msgid "Broadcast"
+msgstr "بث عام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_inbox_message__message_type__attendance
+msgid "Attendance"
+msgstr "حضور"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_inbox_message__message_type__system
+msgid "System"
+msgstr "نظام"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_inbox_message__send_mode__send_now
+msgid "Send Now"
+msgstr "إرسال الآن"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_inbox_message__send_mode__schedule
+msgid "Schedule"
+msgstr "جدولة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields.selection,name:FIN_odoo_attendance_app.selection__odoo_attendance_inbox_message__send_mode__repeat
+msgid "Repeat"
+msgstr "تكرار"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_mon
+msgid "Mon"
+msgstr "الاثنين"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_tue
+msgid "Tue"
+msgstr "الثلاثاء"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_wed
+msgid "Wed"
+msgstr "الأربعاء"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_thu
+msgid "Thu"
+msgstr "الخميس"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_fri
+msgid "Fri"
+msgstr "الجمعة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_sat
+msgid "Sat"
+msgstr "السبت"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_message__repeat_sun
+msgid "Sun"
+msgstr "الأحد"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_recipient__message_id
+msgid "Message"
+msgstr "الرسالة"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_recipient__employee_app_id
+msgid "Mobile App Employee"
+msgstr "موظف تطبيق الجوال"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_recipient__delivered_at
+msgid "Delivered At"
+msgstr "تم التسليم في"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_recipient__is_read
+msgid "Read"
+msgstr "مقروء"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.model.fields,field_description:FIN_odoo_attendance_app.field_odoo_attendance_inbox_recipient__read_at
+msgid "Read At"
+msgstr "قُرئت في"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_vehicle_tree
+msgid "Vehicles"
+msgstr "المركبات"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_vehicle_form
+msgid "Vehicle"
+msgstr "المركبة"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_vehicle_form
+msgid "Vehicle Specifications"
+msgstr "مواصفات المركبة"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_vehicle_form
+msgid "Driver Assignment"
+msgstr "تعيين السائقين"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_vehicle_form
+msgid "Internal Notes"
+msgstr "ملاحظات داخلية"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_vehicle_access_tree
+msgid "Vehicle Access"
+msgstr "الوصول إلى المركبات"
+
+#. module: FIN_odoo_attendance_app
+#: model:ir.actions.act_window,name:FIN_odoo_attendance_app.action_odoo_attendance_vehicle_access
+msgid "Vehicle Access Control"
+msgstr "التحكم بالوصول للمركبات"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.actions.act_window,help:FIN_odoo_attendance_app.action_odoo_attendance_vehicle
+msgid "Register vehicles and restrict them to the right drivers."
+msgstr "سجّل المركبات وقيّدها بالسائقين الصحيحين."
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.actions.act_window,help:FIN_odoo_attendance_app.action_odoo_attendance_vehicle
+msgid ""
+"Each vehicle can be assigned to one or more mobile app employees. Only those drivers\n"
+"                will be able to choose it when recording a kilometrage trip."
+msgstr ""
+"يمكن تعيين كل مركبة لموظف أو أكثر من موظفي تطبيق الجوال. سيتمكن فقط السائقون"
+" المصرح لهم من اختيارها عند تسجيل رحلة بالكيلومتر."
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.actions.act_window,help:FIN_odoo_attendance_app.action_odoo_attendance_vehicle_access
+msgid "Manage which vehicles are available and who can use them."
+msgstr "أدر المركبات المتاحة ومن يمكنه استخدامها."
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.actions.act_window,help:FIN_odoo_attendance_app.action_odoo_attendance_vehicle_access
+msgid ""
+"Add each vehicle with its plate number, categorize it by type, and select "
+"the authorized mobile app employees."
+msgstr ""
+"أضف كل مركبة مع رقم لوحتها، وصنّفها حسب النوع، وحدّد موظفي التطبيق المصرح "
+"لهم."
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fleet_trip_tree
+msgid "Trips"
+msgstr "الرحلات"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fleet_trip_form
+msgid "Fleet Trip"
+msgstr "رحلة الأسطول"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fleet_trip_form
+msgid "Complete Trip"
+msgstr "إنهاء الرحلة"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fleet_trip_form
+msgid "Cancel Trip"
+msgstr "إلغاء الرحلة"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fleet_trip_form
+msgid "Kilometrage Tracking"
+msgstr "تتبع الكيلومتراج"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_fleet_trip_form
+msgid "Location Information"
+msgstr "معلومات الموقع"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.actions.act_window,help:FIN_odoo_attendance_app.action_fleet_trip
+msgid "Create your first fleet trip"
+msgstr "أنشئ أول رحلة أسطول"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.actions.act_window,help:FIN_odoo_attendance_app.action_fleet_trip
+msgid ""
+"Fleet trips track vehicle usage, kilometrage, and locations for "
+"comprehensive fleet management."
+msgstr ""
+"تتبع رحلات الأسطول استخدام المركبة والكيلومتراج والمواقع لإدارة الأسطول بشكل"
+" شامل."
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_far_away_result_tree
+msgid "Far-away Alerts"
+msgstr "تنبيهات البُعد"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_far_away_result_form
+msgid "Far-away Alert"
+msgstr "تنبيه البُعد"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_far_away_result_form
+msgid "Location"
+msgstr "الموقع"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.actions.act_window,help:FIN_odoo_attendance_app.action_odoo_attendance_far_away_results
+msgid "Shows all far-away checks executed by the attendance app."
+msgstr "يعرض جميع فحوصات البُعد التي نفّذها تطبيق الحضور."
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_list
+msgid "Mobile App Messages"
+msgstr "رسائل تطبيق الجوال"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_list
+msgid "Scheduled"
+msgstr "مجدول"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_list
+msgid "Sent"
+msgstr "أُرسل"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_list
+msgid "Recipients"
+msgstr "المستلمون"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_list
+msgid "Read"
+msgstr "مقروء"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_list
+msgid "Unread"
+msgstr "غير مقروء"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_form
+msgid "Mobile App Message"
+msgstr "رسالة تطبيق الجوال"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_form
+msgid "Send Now"
+msgstr "إرسال الآن"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_form
+msgid "Repeat History"
+msgstr "سجل التكرار"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_form
+msgid "Stop Repeat"
+msgstr "إيقاف التكرار"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_form
+msgid "Repeat"
+msgstr "تكرار"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_form
+msgid "Delivery"
+msgstr "التسليم"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_form
+msgid "Recipients"
+msgstr "المستلمون"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_form
+msgid "Write your message here..."
+msgstr "اكتب رسالتك هنا..."
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.ui.view,arch_db:FIN_odoo_attendance_app.view_odoo_attendance_inbox_message_form
+msgid "HH:MM"
+msgstr "HH:MM"
+
+#. module: FIN_odoo_attendance_app
+#: model_terms:ir.actions.act_window,help:FIN_odoo_attendance_app.action_odoo_attendance_inbox_messages
+msgid "Send announcements and scheduled messages to mobile app employees."
+msgstr "أرسل إعلانات ورسائل مجدولة إلى موظفي تطبيق الجوال."

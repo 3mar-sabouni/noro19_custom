@@ -1,0 +1,438 @@
+.o_fin_fleet_dashboard {
+    --fin-fleet-page-bg: linear-gradient(180deg, #f6f8fc 0%, #eef3fa 100%);
+    --fin-fleet-surface: rgba(255, 255, 255, 0.94);
+    --fin-fleet-surface-muted: rgba(246, 249, 255, 0.96);
+    --fin-fleet-border: rgba(67, 98, 141, 0.18);
+    --fin-fleet-text-strong: #102748;
+    --fin-fleet-text: #20324c;
+    --fin-fleet-text-muted: #5f718b;
+    --fin-fleet-track: #e3eaf5;
+    --fin-fleet-input-bg: rgba(255, 255, 255, 0.78);
+    --fin-fleet-shadow: 0 12px 30px rgba(15, 31, 63, 0.08);
+    --bs-body-color: var(--fin-fleet-text);
+    --bs-emphasis-color: var(--fin-fleet-text-strong);
+    --bs-secondary-color: var(--fin-fleet-text-muted);
+    --bs-body-bg: #f6f8fc;
+    --bs-border-color: var(--fin-fleet-border);
+    --bs-tertiary-bg: var(--fin-fleet-surface-muted);
+    --bs-card-bg: var(--fin-fleet-surface);
+    --bs-card-border-color: var(--fin-fleet-border);
+    --bs-table-color: var(--fin-fleet-text);
+    --bs-table-bg: transparent;
+    --bs-table-border-color: var(--fin-fleet-border);
+    --bs-table-striped-color: var(--fin-fleet-text);
+    --bs-table-striped-bg: rgba(37, 99, 235, 0.04);
+    --bs-table-hover-color: var(--fin-fleet-text-strong);
+    --bs-table-hover-bg: rgba(37, 99, 235, 0.08);
+    --bs-link-color: #1d4ed8;
+    --bs-link-hover-color: #1e40af;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    background: var(--fin-fleet-page-bg);
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.o_fin_fleet_dashboard .card {
+    background: var(--fin-fleet-surface);
+    border-color: var(--fin-fleet-border);
+}
+
+.o_fin_fleet_dashboard .table > :not(caption) > * > * {
+    color: var(--fin-fleet-text);
+    background-color: transparent;
+}
+
+.o_fin_fleet_dashboard_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.o_fin_fleet_dashboard_title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--fin-fleet-text-strong);
+}
+
+.o_fin_fleet_dashboard_subtitle {
+    margin: 4px 0 0;
+    color: var(--fin-fleet-text-muted);
+}
+
+.o_fin_fleet_dashboard_actions {
+    display: flex;
+    gap: 8px;
+}
+
+.o_fin_fleet_dashboard_filters {
+    border: 0;
+    border-radius: 18px;
+    background: var(--fin-fleet-surface);
+    box-shadow: var(--fin-fleet-shadow);
+}
+
+.o_fin_fleet_dashboard_filters_grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    padding: 18px;
+}
+
+.o_fin_fleet_filter {
+    min-width: 0;
+}
+
+.o_fin_fleet_filter .form-label {
+    margin-bottom: 6px;
+    color: var(--fin-fleet-text-muted);
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.o_fin_fleet_dashboard .form-control,
+.o_fin_fleet_dashboard .form-select {
+    background: var(--fin-fleet-input-bg);
+    color: var(--fin-fleet-text-strong);
+    border-color: var(--fin-fleet-border);
+}
+
+.o_fin_fleet_dashboard .form-control:focus,
+.o_fin_fleet_dashboard .form-select:focus {
+    border-color: color-mix(in srgb, #3b82f6 52%, var(--fin-fleet-border));
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.18);
+}
+
+.o_fin_fleet_dashboard select option {
+    background: var(--fin-fleet-surface);
+    color: var(--fin-fleet-text-strong);
+}
+
+.o_fin_fleet_dashboard .form-select option:checked {
+    background: color-mix(in srgb, #2563eb 36%, var(--fin-fleet-surface));
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.o_fin_fleet_filter select.form-select {
+    min-height: 108px;
+}
+
+.o_fin_fleet_filter_summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 0 18px 18px;
+}
+
+.o_fin_fleet_filter_summary_text {
+    color: var(--fin-fleet-text-strong);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.o_fin_fleet_filter_chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.o_fin_fleet_filter_chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: color-mix(in srgb, #2563eb 16%, var(--fin-fleet-surface-muted));
+    border: 1px solid color-mix(in srgb, #2563eb 24%, var(--fin-fleet-border));
+    color: var(--fin-fleet-text-strong);
+    font-size: 12px;
+    font-weight: 600;
+    gap: 8px;
+    cursor: pointer;
+    appearance: none;
+}
+
+.o_fin_fleet_filter_chip.is-empty {
+    background: var(--fin-fleet-input-bg);
+    border-color: var(--fin-fleet-border);
+    color: var(--fin-fleet-text-muted);
+    cursor: default;
+}
+
+.o_fin_fleet_filter_chip:hover:not(.is-empty) {
+    background: color-mix(in srgb, #2563eb 24%, var(--fin-fleet-surface-muted));
+    border-color: color-mix(in srgb, #2563eb 34%, var(--fin-fleet-border));
+}
+
+.o_fin_fleet_dashboard_state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    border-radius: 18px;
+    background: var(--fin-fleet-surface);
+    box-shadow: var(--fin-fleet-shadow);
+    color: var(--fin-fleet-text-muted);
+    font-size: 16px;
+}
+
+.o_fin_fleet_dashboard_body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.o_fin_fleet_metric_grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.o_fin_fleet_metric_card {
+    padding: 18px;
+    border-radius: 18px;
+    background: color-mix(in srgb, var(--metric-color) 14%, var(--fin-fleet-surface-muted));
+    border: 1px solid color-mix(in srgb, var(--metric-color) 28%, var(--fin-fleet-border));
+    box-shadow: var(--fin-fleet-shadow);
+}
+
+.o_fin_fleet_metric_value {
+    color: var(--metric-color);
+    font-size: 28px;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.o_fin_fleet_metric_label {
+    margin-top: 6px;
+    color: var(--fin-fleet-text);
+    font-weight: 600;
+}
+
+.o_fin_fleet_chart_grid,
+.o_fin_fleet_table_grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.o_fin_fleet_chart_card,
+.o_fin_fleet_table_card {
+    border: 0;
+    border-radius: 18px;
+    background: var(--fin-fleet-surface);
+    box-shadow: var(--fin-fleet-shadow);
+    padding: 18px;
+}
+
+.o_fin_fleet_card_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.o_fin_fleet_card_header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--fin-fleet-text-strong);
+}
+
+.o_fin_fleet_card_hint {
+    color: var(--fin-fleet-text-muted);
+    font-size: 12px;
+}
+
+.o_fin_fleet_donut_wrap {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+}
+
+.o_fin_fleet_donut {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.o_fin_fleet_donut::after {
+    content: "";
+    position: absolute;
+    inset: 28px;
+    border-radius: 50%;
+    background: var(--fin-fleet-surface);
+}
+
+.o_fin_fleet_donut_center {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--fin-fleet-text-strong);
+}
+
+.o_fin_fleet_donut_center strong {
+    font-size: 34px;
+    line-height: 1;
+}
+
+.o_fin_fleet_donut_center span {
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--fin-fleet-text-muted);
+}
+
+.o_fin_fleet_legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.o_fin_fleet_legend_item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--fin-fleet-text);
+}
+
+.o_fin_fleet_legend_item strong,
+.o_fin_fleet_legend_item span {
+    display: block;
+}
+
+.o_fin_fleet_legend_item span {
+    color: var(--fin-fleet-text-muted);
+    font-size: 13px;
+}
+
+.o_fin_fleet_legend_dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+}
+
+.o_fin_fleet_bar_list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.o_fin_fleet_bar_row {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+}
+
+.o_fin_fleet_bar_label {
+    color: var(--fin-fleet-text);
+    font-weight: 600;
+}
+
+.o_fin_fleet_bar_track {
+    height: 12px;
+    border-radius: 999px;
+    background: var(--fin-fleet-track);
+    overflow: hidden;
+}
+
+.o_fin_fleet_bar_fill {
+    height: 100%;
+    border-radius: inherit;
+}
+
+.o_fin_fleet_bar_value {
+    color: var(--fin-fleet-text-muted);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.o_fin_fleet_table_wrap {
+    overflow: auto;
+}
+
+.o_fin_fleet_table {
+    margin-bottom: 0;
+    color: var(--fin-fleet-text);
+}
+
+.o_fin_fleet_table thead th {
+    border-bottom-color: var(--fin-fleet-border);
+    color: var(--fin-fleet-text-muted);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.o_fin_fleet_table tbody td {
+    border-bottom-color: color-mix(in srgb, var(--fin-fleet-border) 75%, transparent);
+    vertical-align: middle;
+}
+
+.o_fin_fleet_table_name {
+    color: var(--fin-fleet-text-strong);
+    font-weight: 700;
+}
+
+.o_fin_fleet_empty {
+    color: var(--fin-fleet-text-muted);
+    min-height: 84px;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 1600px) {
+    .o_fin_fleet_metric_grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1200px) {
+    .o_fin_fleet_dashboard_filters_grid,
+    .o_fin_fleet_metric_grid,
+    .o_fin_fleet_chart_grid,
+    .o_fin_fleet_table_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .o_fin_fleet_dashboard_header,
+    .o_fin_fleet_filter_summary,
+    .o_fin_fleet_card_header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .o_fin_fleet_dashboard_filters_grid,
+    .o_fin_fleet_metric_grid,
+    .o_fin_fleet_chart_grid,
+    .o_fin_fleet_table_grid,
+    .o_fin_fleet_donut_wrap {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .o_fin_fleet_bar_row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Enhanced Attendance Tree View -->
+    <record id="view_hr_attendance_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.attendance.tree.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="arch" type="xml">
+            <field name="employee_id" position="after">
+                <field name="x_analytic_account_id"/>
+            </field>
+            <field name="check_out" position="after">
+                <field name="x_gps_info"/>
+                <field name="x_checkin_map_url" widget="url" string="Check-in Map" readonly="1"/>
+                <field name="x_checkout_map_url" widget="url" string="Check-out Map" readonly="1"/>
+                <field name="x_checkin_note"/>
+                <field name="x_checkout_note"/>
+                <field name="x_scheduled_hours" string="Scheduled Hours" readonly="1"/>
+                <field name="x_extra_hours" string="Extra Hours" readonly="1"/>
+            </field>
+        </field>
+    </record>
+    
+    <!-- Enhanced Attendance Form View -->
+    <record id="view_hr_attendance_form_inherit" model="ir.ui.view">
+        <field name="name">hr.attendance.form.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+        <field name="arch" type="xml">
+            <field name="employee_id" position="after">
+                <field name="x_analytic_account_id"/>
+            </field>
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="GPS Information">
+                        <group string="Check-in GPS">
+                            <group>
+                                <field name="x_checkin_gps_lat"/>
+                                <field name="x_checkin_gps_lng"/>
+                                <field name="x_checkin_gps_accuracy"/>
+                                <field name="x_checkin_map_url" widget="url" string="Check-in Map" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="x_checkin_gps_address"/>
+                                <field name="x_checkin_selfie_id" widget="image" options="{'preview_image': 'datas'}"/>
+                                <field name="x_checkin_note"/>
+                                <group string="Check-in Photos">
+                                    <button
+                                        name="action_open_checkin_gallery_attachments"
+                                        type="object"
+                                        string="Manage Photos"
+                                        class="oe_highlight"
+                                    />
+                                    <button
+                                        name="action_download_checkin_gallery_zip"
+                                        type="object"
+                                        string="Download All"
+                                    />
+                                    <field name="x_checkin_gallery_count" readonly="1"/>
+                                </group>
+                            </group>
+                        </group>
+                        <group string="Check-out GPS">
+                            <group>
+                                <field name="x_checkout_gps_lat"/>
+                                <field name="x_checkout_gps_lng"/>
+                                <field name="x_checkout_gps_accuracy"/>
+                                <field name="x_checkout_map_url" widget="url" string="Check-out Map" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="x_checkout_gps_address"/>
+                                <field name="x_checkout_selfie_id" widget="image" options="{'preview_image': 'datas'}"/>
+                                <field name="x_checkout_note"/>
+                                <group string="Check-out Photos">
+                                    <button
+                                        name="action_open_checkout_gallery_attachments"
+                                        type="object"
+                                        string="Manage Photos"
+                                        class="oe_highlight"
+                                    />
+                                    <button
+                                        name="action_download_checkout_gallery_zip"
+                                        type="object"
+                                        string="Download All"
+                                    />
+                                    <field name="x_checkout_gallery_count" readonly="1"/>
+                                </group>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

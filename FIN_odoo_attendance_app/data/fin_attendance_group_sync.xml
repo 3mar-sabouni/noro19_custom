@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <function model="res.groups" name="_fin_attendance_sync_category"
+            eval="[[ref('FIN_odoo_attendance_app.group_fin_attendance_manager')]]"/>
+    </data>
+</odoo>

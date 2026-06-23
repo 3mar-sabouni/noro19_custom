@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  Tree View-->
+    <record id="treatment_category_view_form" model="ir.ui.view">
+        <field name="name">treatment.category.view.form</field>
+        <field name="model">treatment.category</field>
+        <field name="arch" type="xml">
+            <list string="Treatment Category" editable="bottom">
+                <field name="name" required="True"/>
+            </list>
+        </field>
+    </record>
+     <record id="treatment_category_menu_action" model="ir.actions.act_window">
+        <field name="name">Treatment Category</field>
+        <field name="res_model">treatment.category</field>
+        <field name="view_mode">list</field>
+    </record>
+    <menuitem id="hospital_root_menu" name="Medical Clinic" sequence="1"/>
+    <menuitem id="medical_configure" name="Configure" parent="hospital_root_menu" sequence="5"/>
+    <menuitem id="treatment_category_menu" name="Treatment Categories" parent="medical_configure" sequence="9"
+              action="treatment_category_menu_action"/>
+
+</odoo>

@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="odoo_attendance_app.FleetDashboard">
+        <div class="o_fin_fleet_dashboard">
+            <div class="o_fin_fleet_dashboard_header">
+                <div>
+                    <h2 class="o_fin_fleet_dashboard_title">Fleet Dashboard</h2>
+                    <p class="o_fin_fleet_dashboard_subtitle">Vehicles, trips, km / mi / hr, driver usage, and maintenance visibility in one place.</p>
+                </div>
+                <div class="o_fin_fleet_dashboard_actions">
+                    <button class="btn btn-outline-secondary" t-on-click="clearFilters">Clear Filters</button>
+                    <button class="btn btn-primary" t-on-click="loadDashboard" t-att-disabled="state.loading">Refresh</button>
+                </div>
+            </div>
+
+            <div class="o_fin_fleet_dashboard_filters card">
+                <div class="o_fin_fleet_dashboard_filters_grid">
+                    <div class="o_fin_fleet_filter">
+                        <label class="form-label">From Date</label>
+                        <input type="date" class="form-control" t-att-value="state.filters.dateFrom" t-on-input="onDateFromInput"/>
+                    </div>
+                    <div class="o_fin_fleet_filter">
+                        <label class="form-label">To Date</label>
+                        <input type="date" class="form-control" t-att-value="state.filters.dateTo" t-on-input="onDateToInput"/>
+                    </div>
+                    <div class="o_fin_fleet_filter">
+                        <label class="form-label" t-esc="selectedTripStateCount ? 'Trip State (' + selectedTripStateCount + ' selected)' : 'Trip State'"/>
+                        <select class="form-select" multiple="multiple" t-on-change="onTripStateChange">
+                            <t t-foreach="state.options.states" t-as="item" t-key="item.key">
+                                <option t-att-value="item.key" t-att-selected="state.filters.stateValues.includes(item.key) ? true : undefined">
+                                    <t t-esc="item.label"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="o_fin_fleet_filter">
+                        <label class="form-label" t-esc="selectedVehicleCount ? 'Vehicles (' + selectedVehicleCount + ' selected)' : 'Vehicles'"/>
+                        <select class="form-select" multiple="multiple" t-on-change="onVehicleChange">
+                            <t t-foreach="state.options.vehicles" t-as="item" t-key="item.id">
+                                <option t-att-value="item.id" t-att-selected="state.filters.vehicleIds.includes(item.id) ? true : undefined">
+                                    <t t-esc="item.label"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="o_fin_fleet_filter">
+                        <label class="form-label" t-esc="selectedDriverCount ? 'Drivers (' + selectedDriverCount + ' selected)' : 'Drivers'"/>
+                        <select class="form-select" multiple="multiple" t-on-change="onDriverChange">
+                            <t t-foreach="state.options.drivers" t-as="item" t-key="item.id">
+                                <option t-att-value="item.id" t-att-selected="state.filters.driverIds.includes(item.id) ? true : undefined">
+                                    <t t-esc="item.label"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="o_fin_fleet_filter">
+                        <label class="form-label" t-esc="selectedAnalyticCount ? 'Projects (' + selectedAnalyticCount + ' selected)' : 'Projects'"/>
+                        <select class="form-select" multiple="multiple" t-on-change="onAnalyticChange">
+                            <t t-foreach="state.options.analytics" t-as="item" t-key="item.id">
+                                <option t-att-value="item.id" t-att-selected="state.filters.analyticIds.includes(item.id) ? true : undefined">
+                                    <t t-esc="item.label"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="o_fin_fleet_filter">
+                        <label class="form-label" t-esc="selectedVehicleStatusCount ? 'Vehicle Status (' + selectedVehicleStatusCount + ' selected)' : 'Vehicle Status'"/>
+                        <select class="form-select" multiple="multiple" t-on-change="onVehicleStatusChange">
+                            <t t-foreach="state.options.vehicleStatuses" t-as="item" t-key="item.key">
+                                <option t-att-value="item.key" t-att-selected="state.filters.vehicleStatuses.includes(item.key) ? true : undefined">
+                                    <t t-esc="item.label"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="o_fin_fleet_filter">
+                        <label class="form-label" t-esc="selectedVehicleTypeCount ? 'Vehicle Type (' + selectedVehicleTypeCount + ' selected)' : 'Vehicle Type'"/>
+                        <select class="form-select" multiple="multiple" t-on-change="onVehicleTypeChange">
+                            <t t-foreach="state.options.vehicleTypes" t-as="item" t-key="item.key">
+                                <option t-att-value="item.key" t-att-selected="state.filters.vehicleTypes.includes(item.key) ? true : undefined">
+                                    <t t-esc="item.label"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="o_fin_fleet_filter">
+                        <label class="form-label" t-esc="selectedFuelTypeCount ? 'Fuel Type (' + selectedFuelTypeCount + ' selected)' : 'Fuel Type'"/>
+                        <select class="form-select" multiple="multiple" t-on-change="onFuelTypeChange">
+                            <t t-foreach="state.options.fuelTypes" t-as="item" t-key="item.key">
+                                <option t-att-value="item.key" t-att-selected="state.filters.fuelTypes.includes(item.key) ? true : undefined">
+                                    <t t-esc="item.label"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <div class="o_fin_fleet_filter_summary">
+                    <div class="o_fin_fleet_filter_summary_text" t-esc="filteredResultsLabel"/>
+                    <div class="o_fin_fleet_filter_chips">
+                        <t t-if="activeFilterChips.length">
+                            <t t-foreach="activeFilterChips" t-as="chip" t-key="chip.key">
+                                <button class="o_fin_fleet_filter_chip" type="button" t-on-click="() => this.removeFilterChip(chip)">
+                                    <span t-esc="chip.label"/>
+                                    <i class="fa fa-times"/>
+                                </button>
+                            </t>
+                        </t>
+                        <span t-else="" class="o_fin_fleet_filter_chip is-empty">No filters applied</span>
+                    </div>
+                </div>
+            </div>
+
+            <div t-if="state.loading" class="o_fin_fleet_dashboard_state">
+                <i class="fa fa-spinner fa-spin me-2"/>
+                <span>Loading fleet dashboard...</span>
+            </div>
+            <div t-elif="state.error" class="alert alert-danger mt-3">
+                <t t-esc="state.error"/>
+            </div>
+            <div t-else="" class="o_fin_fleet_dashboard_body">
+                <div class="o_fin_fleet_metric_grid">
+                    <t t-foreach="metricCards" t-as="item" t-key="item.key">
+                        <div class="o_fin_fleet_metric_card" t-att-style="'--metric-color:' + item.color">
+                            <div class="o_fin_fleet_metric_value">
+                                <t t-esc="item.value"/>
+                            </div>
+                            <div class="o_fin_fleet_metric_label">
+                                <t t-esc="item.label"/>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+
+                <div class="o_fin_fleet_chart_grid">
+                    <div class="card o_fin_fleet_chart_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Vehicle Status</h3>
+                        </div>
+                        <t t-if="vehicleStatusDistributionItems.length">
+                            <div class="o_fin_fleet_donut_wrap">
+                                <div class="o_fin_fleet_donut" t-att-style="vehicleStatusPieStyle">
+                                    <div class="o_fin_fleet_donut_center">
+                                        <strong t-esc="state.visibleVehicles.length"/>
+                                        <span>Vehicles</span>
+                                    </div>
+                                </div>
+                                <div class="o_fin_fleet_legend">
+                                    <t t-foreach="vehicleStatusDistributionItems" t-as="item" t-key="item.key">
+                                        <div class="o_fin_fleet_legend_item">
+                                            <span class="o_fin_fleet_legend_dot" t-att-style="'background:' + item.color"/>
+                                            <div>
+                                                <strong t-esc="item.label"/>
+                                                <span t-esc="item.value"/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No vehicles to display.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_chart_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Trip State</h3>
+                        </div>
+                        <t t-if="tripStateDistributionItems.length">
+                            <div class="o_fin_fleet_donut_wrap">
+                                <div class="o_fin_fleet_donut" t-att-style="tripStatePieStyle">
+                                    <div class="o_fin_fleet_donut_center">
+                                        <strong t-esc="state.visibleTrips.length"/>
+                                        <span>Trips</span>
+                                    </div>
+                                </div>
+                                <div class="o_fin_fleet_legend">
+                                    <t t-foreach="tripStateDistributionItems" t-as="item" t-key="item.key">
+                                        <div class="o_fin_fleet_legend_item">
+                                            <span class="o_fin_fleet_legend_dot" t-att-style="'background:' + item.color"/>
+                                            <div>
+                                                <strong t-esc="item.label"/>
+                                                <span t-esc="item.value"/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No trips to display.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_chart_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Vehicle Type Mix</h3>
+                        </div>
+                        <t t-if="vehicleTypeDistributionItems.length">
+                            <div class="o_fin_fleet_bar_list">
+                                <t t-set="vehicleTypeTotal" t-value="getTotal(vehicleTypeDistributionItems)"/>
+                                <t t-foreach="vehicleTypeDistributionItems" t-as="item" t-key="item.key">
+                                    <div class="o_fin_fleet_bar_row">
+                                        <span class="o_fin_fleet_bar_label" t-esc="item.label"/>
+                                        <div class="o_fin_fleet_bar_track">
+                                            <div class="o_fin_fleet_bar_fill" t-att-style="'width:' + getBarWidth(item.value, vehicleTypeTotal) + ';background:' + item.color"/>
+                                        </div>
+                                        <span class="o_fin_fleet_bar_value" t-esc="item.value"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No vehicle type data yet.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_chart_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Fuel Mix</h3>
+                        </div>
+                        <t t-if="fuelTypeDistributionItems.length">
+                            <div class="o_fin_fleet_bar_list">
+                                <t t-set="fuelTypeTotal" t-value="getTotal(fuelTypeDistributionItems)"/>
+                                <t t-foreach="fuelTypeDistributionItems" t-as="item" t-key="item.key">
+                                    <div class="o_fin_fleet_bar_row">
+                                        <span class="o_fin_fleet_bar_label" t-esc="item.label"/>
+                                        <div class="o_fin_fleet_bar_track">
+                                            <div class="o_fin_fleet_bar_fill" t-att-style="'width:' + getBarWidth(item.value, fuelTypeTotal) + ';background:' + item.color"/>
+                                        </div>
+                                        <span class="o_fin_fleet_bar_value" t-esc="item.value"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No fuel data yet.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_chart_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Trips by Vehicle</h3>
+                        </div>
+                        <t t-if="tripCountByVehicle.length">
+                            <div class="o_fin_fleet_bar_list">
+                                <t t-set="vehicleTripTotal" t-value="getTotal(tripCountByVehicle)"/>
+                                <t t-foreach="tripCountByVehicle.slice(0, 10)" t-as="item" t-key="item.key">
+                                    <div class="o_fin_fleet_bar_row">
+                                        <span class="o_fin_fleet_bar_label" t-esc="item.label"/>
+                                        <div class="o_fin_fleet_bar_track">
+                                            <div class="o_fin_fleet_bar_fill" t-att-style="'width:' + getBarWidth(item.value, vehicleTripTotal) + ';background:' + item.color"/>
+                                        </div>
+                                        <span class="o_fin_fleet_bar_value" t-esc="item.valueLabel"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No vehicle trip data yet.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_chart_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Distance by Vehicle</h3>
+                        </div>
+                        <t t-if="distanceByVehicle.length">
+                            <div class="o_fin_fleet_bar_list">
+                                <t t-set="vehicleDistanceTotal" t-value="getTotal(distanceByVehicle)"/>
+                                <t t-foreach="distanceByVehicle.slice(0, 10)" t-as="item" t-key="item.key">
+                                    <div class="o_fin_fleet_bar_row">
+                                        <span class="o_fin_fleet_bar_label" t-esc="item.label"/>
+                                        <div class="o_fin_fleet_bar_track">
+                                            <div class="o_fin_fleet_bar_fill" t-att-style="'width:' + getBarWidth(item.value, vehicleDistanceTotal) + ';background:' + item.color"/>
+                                        </div>
+                                        <span class="o_fin_fleet_bar_value" t-esc="item.valueLabel"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No vehicle km / mi / hr yet.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_chart_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Trips by Driver</h3>
+                        </div>
+                        <t t-if="tripCountByDriver.length">
+                            <div class="o_fin_fleet_bar_list">
+                                <t t-set="driverTripTotal" t-value="getTotal(tripCountByDriver)"/>
+                                <t t-foreach="tripCountByDriver.slice(0, 10)" t-as="item" t-key="item.key">
+                                    <div class="o_fin_fleet_bar_row">
+                                        <span class="o_fin_fleet_bar_label" t-esc="item.label"/>
+                                        <div class="o_fin_fleet_bar_track">
+                                            <div class="o_fin_fleet_bar_fill" t-att-style="'width:' + getBarWidth(item.value, driverTripTotal) + ';background:' + item.color"/>
+                                        </div>
+                                        <span class="o_fin_fleet_bar_value" t-esc="item.valueLabel"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No driver trip data yet.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_chart_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Distance by Driver</h3>
+                        </div>
+                        <t t-if="distanceByDriver.length">
+                            <div class="o_fin_fleet_bar_list">
+                                <t t-set="driverDistanceTotal" t-value="getTotal(distanceByDriver)"/>
+                                <t t-foreach="distanceByDriver.slice(0, 10)" t-as="item" t-key="item.key">
+                                    <div class="o_fin_fleet_bar_row">
+                                        <span class="o_fin_fleet_bar_label" t-esc="item.label"/>
+                                        <div class="o_fin_fleet_bar_track">
+                                            <div class="o_fin_fleet_bar_fill" t-att-style="'width:' + getBarWidth(item.value, driverDistanceTotal) + ';background:' + item.color"/>
+                                        </div>
+                                        <span class="o_fin_fleet_bar_value" t-esc="item.valueLabel"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No driver km / mi / hr yet.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_chart_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Trips by Project</h3>
+                        </div>
+                        <t t-if="tripCountByProject.length">
+                            <div class="o_fin_fleet_bar_list">
+                                <t t-set="projectTripTotal" t-value="getTotal(tripCountByProject)"/>
+                                <t t-foreach="tripCountByProject.slice(0, 10)" t-as="item" t-key="item.key">
+                                    <div class="o_fin_fleet_bar_row">
+                                        <span class="o_fin_fleet_bar_label" t-esc="item.label"/>
+                                        <div class="o_fin_fleet_bar_track">
+                                            <div class="o_fin_fleet_bar_fill" t-att-style="'width:' + getBarWidth(item.value, projectTripTotal) + ';background:' + item.color"/>
+                                        </div>
+                                        <span class="o_fin_fleet_bar_value" t-esc="item.valueLabel"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No project trip data yet.</div>
+                    </div>
+                </div>
+
+                <div class="o_fin_fleet_table_grid">
+                    <div class="card o_fin_fleet_table_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Maintenance Attention</h3>
+                            <span class="o_fin_fleet_card_hint">Highest km / mi / hr gap since last maintenance</span>
+                        </div>
+                        <t t-if="maintenanceAttentionRows.length">
+                            <div class="o_fin_fleet_table_wrap">
+                                <table class="table table-sm o_fin_fleet_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Vehicle</th>
+                                            <th>Status</th>
+                                            <th>Current KM</th>
+                                            <th>Last Maintenance KM</th>
+                                            <th>Gap</th>
+                                            <th/>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="maintenanceAttentionRows" t-as="row" t-key="row.id">
+                                            <tr>
+                                                <td class="o_fin_fleet_table_name" t-esc="row.vehicleLabel"/>
+                                                <td>
+                                                    <span class="badge rounded-pill" t-att-style="'background:' + row.statusColor" t-esc="row.statusLabel"/>
+                                                </td>
+                                                <td t-esc="row.currentKm"/>
+                                                <td t-esc="row.maintenanceKm"/>
+                                                <td t-esc="row.gapLabel"/>
+                                                <td class="text-end">
+                                                    <button class="btn btn-sm btn-outline-primary" t-on-click="() => this.openVehicle(row.id)">Open</button>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No visible vehicles for maintenance review.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_table_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Vehicles Without Drivers</h3>
+                            <span class="o_fin_fleet_card_hint">Visible vehicles missing allowed employee assignments</span>
+                        </div>
+                        <t t-if="vehiclesWithoutDriverRows.length">
+                            <div class="o_fin_fleet_table_wrap">
+                                <table class="table table-sm o_fin_fleet_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Vehicle</th>
+                                            <th>Status</th>
+                                            <th>Type</th>
+                                            <th>Fuel</th>
+                                            <th/>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="vehiclesWithoutDriverRows" t-as="row" t-key="row.id">
+                                            <tr>
+                                                <td class="o_fin_fleet_table_name" t-esc="row.vehicleLabel"/>
+                                                <td>
+                                                    <span class="badge rounded-pill" t-att-style="'background:' + row.statusColor" t-esc="row.statusLabel"/>
+                                                </td>
+                                                <td t-esc="row.typeLabel"/>
+                                                <td t-esc="row.fuelLabel"/>
+                                                <td class="text-end">
+                                                    <button class="btn btn-sm btn-outline-primary" t-on-click="() => this.openVehicle(row.id)">Open</button>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">All visible vehicles already have assigned drivers.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_table_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Recent Trips</h3>
+                            <span t-if="state.visibleTrips.length &gt; 12" class="o_fin_fleet_card_hint" t-esc="'Showing latest 12 of ' + state.visibleTrips.length"/>
+                        </div>
+                        <t t-if="recentTripRows.length">
+                            <div class="o_fin_fleet_table_wrap">
+                                <table class="table table-sm o_fin_fleet_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Trip</th>
+                                            <th>Vehicle</th>
+                                            <th>Driver</th>
+                                            <th>Project</th>
+                                            <th>State</th>
+                                            <th>Distance</th>
+                                            <th>Date Range</th>
+                                            <th/>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="recentTripRows" t-as="row" t-key="row.id">
+                                            <tr>
+                                                <td class="o_fin_fleet_table_name" t-esc="row.tripLabel"/>
+                                                <td t-esc="row.vehicleLabel"/>
+                                                <td t-esc="row.driverLabel"/>
+                                                <td t-esc="row.projectLabel"/>
+                                                <td>
+                                                    <span class="badge rounded-pill" t-att-style="'background:' + row.stateColor" t-esc="row.stateLabel"/>
+                                                </td>
+                                                <td t-esc="row.distanceLabel"/>
+                                                <td t-esc="row.dateRange"/>
+                                                <td class="text-end">
+                                                    <button class="btn btn-sm btn-outline-primary" t-on-click="() => this.openTrip(row.id)">Open</button>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No trips found for the current filters.</div>
+                    </div>
+
+                    <div class="card o_fin_fleet_table_card">
+                        <div class="o_fin_fleet_card_header">
+                            <h3>Vehicle Utilization</h3>
+                            <span class="o_fin_fleet_card_hint">Trips, assigned drivers, and distance in the filtered scope</span>
+                        </div>
+                        <t t-if="vehicleOverviewRows.length">
+                            <div class="o_fin_fleet_table_wrap">
+                                <table class="table table-sm o_fin_fleet_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Vehicle</th>
+                                            <th>Drivers</th>
+                                            <th>Status</th>
+                                            <th>Type</th>
+                                            <th>Trips</th>
+                                            <th>Distance</th>
+                                            <th/>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="vehicleOverviewRows" t-as="row" t-key="row.id">
+                                            <tr>
+                                                <td class="o_fin_fleet_table_name" t-esc="row.vehicleLabel"/>
+                                                <td t-esc="row.driverLabel"/>
+                                                <td>
+                                                    <span class="badge rounded-pill" t-att-style="'background:' + row.statusColor" t-esc="row.statusLabel"/>
+                                                </td>
+                                                <td t-esc="row.typeLabel"/>
+                                                <td t-esc="row.tripCount"/>
+                                                <td t-esc="row.distanceLabel"/>
+                                                <td class="text-end">
+                                                    <button class="btn btn-sm btn-outline-primary" t-on-click="() => this.openVehicle(row.id)">Open</button>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_fleet_empty">No visible vehicles to summarize.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

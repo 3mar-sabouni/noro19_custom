@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="medical_clinic_assets_backend"
+              inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+
+            <script type="text/javascript"
+                    src="/medical_clinic/static/src/js/calendar_patch.js"/>
+
+            <link rel="stylesheet"
+                  href="/medical_clinic/static/src/css/calendar.css"/>
+
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Image Hub</title>
+    <style>
+        /* Basic styles for layout and presentation */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1, h2 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .image-gallery {
+            margin-bottom: 50px;
+        }
+
+        .image-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+        }
+
+        .image-item {
+            width: 200px;
+            text-align: center;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+        }
+
+        .image-item p {
+            font-size: 14px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .workspace-image img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .bulk-upload {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .bulk-upload button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .bulk-upload button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to Customer Image Hub</h1>
+            <p>Manage, compare, and view all customer images efficiently in one place.</p>
+        </header>
+
+        <!-- Image Gallery Section -->
+        <section class="image-gallery">
+            <h2>Customer Image Gallery</h2>
+            <p>Here, you can view all the customer images that are uploaded to the system. Below is the collection of various image types used in our customer workspace.</p>
+
+            <div class="image-list">
+                <!-- Image: Home -->
+                <div class="image-item">
+                    <img src="Home.png" alt="Home Image" class="image-thumbnail">
+                    <p><strong>Home Image:</strong> A welcoming image representing the customer's home section.</p>
+                </div>
+
+               
+               <div class="image-item">
+                    <img src="image_workspace.png" alt="Workspace Image" class="image-thumbnail">
+                    <p><strong>Workspace Image:</strong> The main workspace where customer images are managed and viewed.</p>
+                </div>
+
+                <!-- Image: Edit -->
+                <div class="image-item">
+                    <img src="eidt.png" alt="Edit Image" class="image-thumbnail">
+<p><strong>Edit Image:</strong> This image allows users to edit customer images directly. <strong>Note:</strong> Only images with the green toggle enabled will appear in the edit and comparison views.</p>
+                </div>
+
+                 <div class="image-item">
+                     <h2>Bulk Upload</h2>
+                    <p>To enhance the speed of managing customer images, you can use the bulk upload feature below to quickly upload multiple images at once.</p>
+                    <button>Upload Images</button>
+                </div>
+                
+            </div>
+        </section>
+        
+        
+
+        <footer>
+            <p>Powered by Popway Software</p>
+        </footer>
+    </div>
+
+    
+</body>
+</html>
+    

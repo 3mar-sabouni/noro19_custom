@@ -1,0 +1,17 @@
+
+<odoo>
+    <record id="view_tag_list" model="ir.ui.view">
+        <field name="model">customer.image.tag</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- <record id="action_tag" model="ir.actions.act_window">
+        <field name="name">Image Tags</field>
+        <field name="res_model">customer.image.tag</field>
+        <field name="view_mode">list,form</field>
+    </record> -->
+</odoo>

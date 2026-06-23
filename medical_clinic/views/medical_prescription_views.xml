@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    Search, Filter, Group-->
+    <record id="medical_prescription_search" model="ir.ui.view">
+        <field name="name">medical.prescription.search</field>
+        <field name="model">medical.prescription</field>
+        <field name="arch" type="xml">
+            <!-- Search -->
+            <search>
+                <field name="patient_id"/>
+                <field name="prescribed_doctor_id"/>
+                <!-- Filter -->
+                <filter string="Today's Prescription" name="today"
+                        domain="[('prescription_date', '=', context_today())]"/>
+                <filter string="Yesterday's Prescription" name="yesterday"
+                        domain="[('prescription_date', '=',  ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')))]"/>
+                <!-- Group By -->
+                <!-- <group expand="0" string="group by">
+                    <filter name="invoiced" string="Invoiced"
+                            domain="[('state', 'in', ['invoiced'])]"/>
+                    <filter name="prescribe" string="Prescribe"
+                            domain="[('state', 'in', ['done'])]"/>
+                    <filter name="treatment_id"
+                            context="{'group_by':'treatment_id','residual_visible':True}"/>
+                </group> -->
+            </search>
+        </field>
+    </record>
+    <!--  Form View-->
+    <record id="medical_prescription_view_form" model="ir.ui.view">
+        <field name="name">medical.prescription.view.form</field>
+        <field name="model">medical.prescription</field>
+        <field name="arch" type="xml">
+            <form string="Prescription">
+                <header>
+                    <button name="action_prescribed" id="action_prescribed"
+                            string="Prescribe" class="btn-primary"
+                            type="object" invisible="state != 'new'"/>
+                    <button name="action_print_prescription" string="Print" class="btn-primary"
+                            type="object" invisible="state != 'done'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="new,done"
+                           on_change="1" field_id="state_0"/>
+                    <button name="create_invoice" id="create_invoice"
+                            type="object" string="Create Invoice"
+                            class="btn-primary" invisible="state != 'done'"/>
+                </header>
+                <sheet>
+                    <!-- Smart button-->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_invoice" type="object"
+                                string="Invoice" class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="state != 'invoiced'">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_text">Invoice</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="sequence_no"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="appointment_ids" invisible="1" />
+                            <field name="appointment_id" readonly="state == 'invoiced'"/>
+                            <field name="patient_id" readonly="state == 'invoiced'"/>
+                          
+                                <field name="referred_doctor_id" readonly="state == 'invoiced'"/>
+                                <field name="next_appointment_date" readonly="state == 'invoiced'"/>
+                            <!--                                <field name="token_no"/>-->
+                        </group>
+                        <group>
+                            <field name="treatment_id" readonly="state == 'invoiced'"/>
+                            <field name="currency_id" invisible="1" />
+                            <field name="cost" widget="monetary" readonly="state == 'invoiced'"/>
+                            <field name="prescribed_doctor_id" readonly="state == 'invoiced'"/>
+                            <field name="prescription_date" readonly="state == 'invoiced'"/>
+                        </group>
+
+                    </group>
+                    <field name="medicine_ids">
+                        <list string="Prescribed Medicines" editable="bottom">
+                            <field name="medicament_id" />
+                            <field name="generic_name"/>
+                            <field name="dosage_strength"/>
+                            <field name="medicament_form"/>
+                            <field name="quantity"/>
+                            <field name="price"/>
+                            <field name="medicine_take"/>
+                            <field name="morning"/>
+                            <field name="noon"/>
+                            <field name="night"/>
+                            <field name="days"/>
+                            <!--                                <field name="total"/>-->
+
+                            <!--
+                            -->
+                        </list>
+                    </field>
+                    <!--                        <group col="12" class="oe_invoice_lines_tab">-->
+                    <!--                            <group colspan="12">-->
+                    <!--                                <group class="oe_subtotal_footer">-->
+                    <!--                                    <field name="grand_total" colspan="2"/>-->
+                    <!--                                </group>-->
+                    <!--                            </group>-->
+                    <!--                        </group>-->
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <!--  Tree View-->
+    <record id="medical_prescription_view_tree" model="ir.ui.view">
+        <field name="name">medical.prescription.view.tree</field>
+        <field name="model">medical.prescription</field>
+        <field name="arch" type="xml">
+            <list string="Medical Prescription">
+                <field name="sequence_no"/>
+                <field name="patient_id"/>
+                <field name="prescribed_doctor_id"/>
+                <field name="prescription_date"/>
+                <field name="state" widget="badge"
+                       decoration-warning="state == 'new'"
+                       decoration-info="state == 'done'"
+                       decoration-success="state == 'invoiced'"/>
+            </list>
+        </field>
+    </record>
+    <!--Menu Action view for Medical Prescription-->
+    <record id="medical_prescription_menu_action" model="ir.actions.act_window">
+        <field name="name">Medical Prescription</field>
+        <field name="res_model">medical.prescription</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_today': True}</field>
+    </record>
+    <!-- MENU STRUCTURE -->
+    <menuitem id="hospital_root_menu" name="Medical Clinic" sequence="1"/>
+    <menuitem id="medical_prescription_menu" name="Prescription" parent="hospital_root_menu"
+              action="medical_prescription_menu_action" sequence="2"/>
+</odoo>

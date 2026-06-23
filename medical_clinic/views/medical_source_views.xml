@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  Tree View-->
+    <record id="medical_source_view_form" model="ir.ui.view">
+        <field name="name">medical.source.view.form</field>
+        <field name="model">medical.source</field>
+        <field name="arch" type="xml">
+            <list string="Medical  Source" editable="bottom">
+                <field name="name" required="True"/>
+            </list>
+        </field>
+    </record>
+     <record id="medical_source_menu_action" model="ir.actions.act_window">
+        <field name="name">Medical Source</field>
+        <field name="res_model">medical.source</field>
+        <field name="view_mode">list</field>
+    </record>
+    <menuitem id="hospital_root_menu" name="Medical Clinic" sequence="1"/>
+    <menuitem id="medical_configure" name="Configure" parent="hospital_root_menu" sequence="5"/>
+    <menuitem id="medical_source_menu" name="Medical Source" parent="medical_configure" sequence="9"
+              action="medical_source_menu_action"/>
+
+</odoo>

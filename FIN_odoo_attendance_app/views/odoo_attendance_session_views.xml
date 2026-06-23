@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- List View for Sessions -->
+    <record id="view_odoo_attendance_session_list" model="ir.ui.view">
+        <field name="name">odoo.attendance.session.list</field>
+        <field name="model">odoo.attendance.session</field>
+        <field name="arch" type="xml">
+            <list string="App Sessions">
+                <field name="employee_app_id"/>
+                <field name="device_id"/>
+                <field name="created_at"/>
+                <field name="expires_at"/>
+                <field name="is_revoked"/>
+            </list>
+        </field>
+    </record>
+    
+    <!-- Form View for Sessions -->
+    <record id="view_odoo_attendance_session_form" model="ir.ui.view">
+        <field name="name">odoo.attendance.session.form</field>
+        <field name="model">odoo.attendance.session</field>
+        <field name="arch" type="xml">
+            <form string="App Session">
+                <header>
+                    <button name="revoke" string="Revoke Session" type="object" 
+                            class="oe_highlight" confirm="Revoke this session?"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_app_id"/>
+                            <field name="device_id"/>
+                        </group>
+                        <group>
+                            <field name="created_at"/>
+                            <field name="expires_at"/>
+                            <field name="is_revoked"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_odoo_attendance_session" model="ir.actions.act_window">
+        <field name="name">App Sessions</field>
+        <field name="res_model">odoo.attendance.session</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No active sessions
+            </p>
+        </field>
+    </record>
+    
+</odoo>

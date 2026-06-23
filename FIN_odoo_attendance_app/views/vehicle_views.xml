@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_odoo_attendance_vehicle_tree" model="ir.ui.view">
+        <field name="name">odoo.attendance.vehicle.list</field>
+        <field name="model">odoo.attendance.vehicle</field>
+        <field name="arch" type="xml">
+            <list string="Vehicles" create="1" edit="1" delete="1">
+                <field name="name"/>
+                <field name="license_plate"/>
+                <field name="vehicle_type"/>
+                <field name="vehicle_status" widget="badge" decoration-success="vehicle_status == 'active'"
+                       decoration-warning="vehicle_status == 'in_maintenance'"/>
+                <field name="current_kilometrage"/>
+                <field name="allowed_employee_ids" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_odoo_attendance_vehicle_form" model="ir.ui.view">
+        <field name="name">odoo.attendance.vehicle.form</field>
+        <field name="model">odoo.attendance.vehicle</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle" create="1" edit="1" delete="1">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="license_plate"/>
+                            <field name="vin_number"/>
+                            <field name="vehicle_type"/>
+                            <field name="vehicle_status"/>
+                            <field name="fuel_type"/>
+                        </group>
+                        <group>
+                            <field name="purchase_date"/>
+                            <field name="current_kilometrage"/>
+                            <field name="last_maintenance_kilometrage"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group string="Vehicle Specifications">
+                        <field name="vehicle_specifications" nolabel="1"/>
+                    </group>
+                    <group string="Driver Assignment">
+                        <field name="allowed_employee_ids" nolabel="1" widget="many2many_tags"/>
+                    </group>
+                    <group string="Internal Notes">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_odoo_attendance_vehicle" model="ir.actions.act_window">
+        <field name="name">Fleet Vehicles</field>
+        <field name="res_model">odoo.attendance.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Register vehicles and restrict them to the right drivers.
+            </p>
+            <p>
+                Each vehicle can be assigned to one or more mobile app employees. Only those drivers
+                will be able to choose it when recording a km / mi / hr trip.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_odoo_attendance_vehicle_access_tree" model="ir.ui.view">
+        <field name="name">odoo.attendance.vehicle.access.list</field>
+        <field name="model">odoo.attendance.vehicle</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="Vehicle Access">
+                <field name="name"/>
+                <field name="license_plate"/>
+                <field name="vehicle_type"/>
+                <field name="allowed_employee_ids" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_odoo_attendance_vehicle_access" model="ir.actions.act_window">
+        <field name="name">Vehicle Access Control</field>
+        <field name="res_model">odoo.attendance.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="views" eval="[(ref('view_odoo_attendance_vehicle_access_tree'), 'list'), (ref('view_odoo_attendance_vehicle_form'), 'form')]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Manage which vehicles are available and who can use them.
+            </p>
+            <p>
+                Add each vehicle with its plate number, categorize it by type, and select the authorized mobile app employees.
+            </p>
+        </field>
+    </record>
+</odoo>
+
+
+

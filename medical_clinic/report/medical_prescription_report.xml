@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Report Action of Medical Prescription Pdf -->
+    <record id="report_pdf_medical_prescription" model="ir.actions.report">
+        <field name="name">Prescription Pdf</field>
+        <field name="model">medical.prescription</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">medical_clinic.report_prescription</field>
+        <field name="report_file">medical_clinic.report_prescription</field>
+        <field name="print_report_name">'Prescription Report - %s' % (object.sequence_no)</field>
+        <field name="binding_model_id" ref="medical_clinic.model_medical_prescription"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

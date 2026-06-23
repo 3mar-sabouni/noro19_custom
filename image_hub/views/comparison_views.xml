@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_customer_image_comparison_form" model="ir.ui.view">
+        <field name="name">customer.image.comparison.form</field>
+        <field name="model">customer.image.comparison</field>
+        <field name="arch" type="xml">
+            <form string="Image Comparison">
+                <sheet>
+
+                    <group>
+                        <field name="name"/>
+                    </group>
+
+                    <group col="2">
+
+                        <div class="comparison_box">
+                            <div class="o_form_label">Before</div>
+                            <field name="before_image_id"
+                                   widget="image"
+                                   readonly="1"
+                                   options="{'preview_image': 'image_1920'}"/>
+                        </div>
+
+                        <div class="comparison_box">
+                            <div class="o_form_label">After</div>
+                            <field name="after_image_id"
+                                   widget="image"
+                                   readonly="1"
+                                   options="{'preview_image': 'image_1920'}"/>
+                        </div>
+
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

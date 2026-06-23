@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="odoo_attendance_app.TaskDashboard">
+        <div class="o_fin_task_dashboard">
+            <div class="o_fin_task_dashboard_header">
+                <div>
+                    <h2 class="o_fin_task_dashboard_title">Task Dashboard</h2>
+                    <p class="o_fin_task_dashboard_subtitle">Same task dashboard sections used in the mobile app.</p>
+                </div>
+                <div class="o_fin_task_dashboard_actions">
+                    <button class="btn btn-outline-secondary" t-on-click="clearFilters">Clear Filters</button>
+                    <button class="btn btn-primary" t-on-click="loadDashboard" t-att-disabled="state.loading">Refresh</button>
+                </div>
+            </div>
+
+            <div class="o_fin_task_dashboard_filters card">
+                <div class="o_fin_task_dashboard_filters_grid">
+                    <div class="o_fin_task_filter">
+                        <label class="form-label">Search</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Task number, title, description"
+                            t-att-value="state.filters.search"
+                            t-on-input="onSearchInput"
+                        />
+                    </div>
+                    <div class="o_fin_task_filter">
+                        <label class="form-label">Task ID / Number</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Exact ID or task number"
+                            t-att-value="state.filters.taskId"
+                            t-on-input="onTaskIdInput"
+                        />
+                    </div>
+                    <div class="o_fin_task_filter">
+                        <label class="form-label">From Date</label>
+                        <input type="date" class="form-control" t-att-value="state.filters.dateFrom" t-on-input="onDateFromInput"/>
+                    </div>
+                    <div class="o_fin_task_filter">
+                        <label class="form-label">To Date</label>
+                        <input type="date" class="form-control" t-att-value="state.filters.dateTo" t-on-input="onDateToInput"/>
+                    </div>
+                    <div class="o_fin_task_filter">
+                        <label class="form-label" t-esc="selectedStatusCount ? 'Status (' + selectedStatusCount + ' selected)' : 'Status'"/>
+                        <select class="form-select" multiple="multiple" t-on-change="onStatusChange">
+                            <t t-foreach="metricCards" t-as="item" t-key="item.key">
+                                <option t-att-value="item.key" t-att-selected="state.filters.statusValues.includes(item.key) ? true : undefined">
+                                    <t t-esc="item.label"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="o_fin_task_filter">
+                        <label class="form-label" t-esc="selectedEmployeeCount ? 'Employees (' + selectedEmployeeCount + ' selected)' : 'Employees'"/>
+                        <select class="form-select" multiple="multiple" t-on-change="onEmployeeChange">
+                            <t t-foreach="state.options.employees" t-as="employee" t-key="employee.id">
+                                <option t-att-value="employee.id" t-att-selected="state.filters.employeeIds.includes(employee.id) ? true : undefined">
+                                    <t t-esc="employee.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="o_fin_task_filter o_fin_task_filter_wide">
+                        <label class="form-label" t-esc="selectedAnalyticCount ? 'Projects (' + selectedAnalyticCount + ' selected)' : 'Projects'"/>
+                        <select class="form-select" multiple="multiple" t-on-change="onAnalyticChange">
+                            <t t-foreach="state.options.analytics" t-as="analytic" t-key="analytic.id">
+                                <option t-att-value="analytic.id" t-att-selected="state.filters.analyticIds.includes(analytic.id) ? true : undefined">
+                                    <t t-esc="analytic.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <div class="o_fin_task_filter_summary">
+                    <div class="o_fin_task_filter_summary_text" t-esc="filteredResultsLabel"/>
+                    <div class="o_fin_task_filter_chips">
+                        <t t-if="activeFilterChips.length">
+                            <t t-foreach="activeFilterChips" t-as="chip" t-key="chip.key">
+                                <button class="o_fin_task_filter_chip" type="button" t-on-click="() => this.removeFilterChip(chip)">
+                                    <span t-esc="chip.label"/>
+                                    <i class="fa fa-times"/>
+                                </button>
+                            </t>
+                        </t>
+                        <span t-else="" class="o_fin_task_filter_chip is-empty">No filters applied</span>
+                    </div>
+                </div>
+            </div>
+
+            <div t-if="state.loading" class="o_fin_task_dashboard_state">
+                <i class="fa fa-spinner fa-spin me-2"/>
+                <span>Loading task dashboard...</span>
+            </div>
+            <div t-elif="state.error" class="alert alert-danger mt-3">
+                <t t-esc="state.error"/>
+            </div>
+            <div t-else="" class="o_fin_task_dashboard_body">
+                <div class="o_fin_task_metric_grid">
+                    <t t-foreach="metricCards" t-as="item" t-key="item.key">
+                        <div class="o_fin_task_metric_card" t-att-style="'--metric-color:' + item.color">
+                            <div class="o_fin_task_metric_value">
+                                <t t-esc="item.value"/>
+                            </div>
+                            <div class="o_fin_task_metric_label">
+                                <t t-esc="item.label"/>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+
+                <div class="o_fin_task_chart_grid">
+                    <div class="card o_fin_task_chart_card">
+                        <div class="o_fin_task_card_header">
+                            <h3>Tasks by Status</h3>
+                        </div>
+                        <t t-if="statusPieSegments.length">
+                            <div class="o_fin_task_donut_wrap">
+                                <div class="o_fin_task_donut" t-att-style="statusPieStyle">
+                                    <div class="o_fin_task_donut_center">
+                                        <strong t-esc="state.visibleTasks.length"/>
+                                        <span>Tasks</span>
+                                    </div>
+                                </div>
+                                <div class="o_fin_task_legend">
+                                    <t t-foreach="statusPieSegments" t-as="segment" t-key="segment.key">
+                                        <div class="o_fin_task_legend_item">
+                                            <span class="o_fin_task_legend_dot" t-att-style="'background:' + segment.color"/>
+                                            <div>
+                                                <strong t-esc="segment.label"/>
+                                                <span t-esc="segment.value"/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_task_empty">No tasks to display.</div>
+                    </div>
+
+                    <div class="card o_fin_task_chart_card">
+                        <div class="o_fin_task_card_header">
+                            <h3>Progress by Employee</h3>
+                        </div>
+                        <t t-if="progressByEmployee.length">
+                            <div class="o_fin_task_progress_list">
+                                <t t-foreach="progressByEmployee.slice(0, 10)" t-as="item" t-key="item.key">
+                                    <div class="o_fin_task_progress_row">
+                                        <div class="o_fin_task_progress_meta">
+                                            <span class="o_fin_task_progress_name" t-esc="item.label"/>
+                                            <span class="o_fin_task_progress_value" t-esc="item.avg.toFixed(0) + '%'"/>
+                                        </div>
+                                        <div class="o_fin_task_progress_track">
+                                            <div
+                                                class="o_fin_task_progress_fill"
+                                                t-att-class="getProgressBarClass(item.avg)"
+                                                t-att-style="'width:' + getProgressWidth(item.avg)"
+                                            />
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_task_empty">No employee progress yet.</div>
+                    </div>
+
+                    <div class="card o_fin_task_chart_card">
+                        <div class="o_fin_task_card_header">
+                            <h3>Progress by Project</h3>
+                        </div>
+                        <t t-if="progressByAnalytic.length">
+                            <div class="o_fin_task_progress_list">
+                                <t t-foreach="progressByAnalytic.slice(0, 10)" t-as="item" t-key="item.key">
+                                    <div class="o_fin_task_progress_row">
+                                        <div class="o_fin_task_progress_meta">
+                                            <span class="o_fin_task_progress_name" t-esc="item.label"/>
+                                            <span class="o_fin_task_progress_value" t-esc="item.avg.toFixed(0) + '%'"/>
+                                        </div>
+                                        <div class="o_fin_task_progress_track">
+                                            <div
+                                                class="o_fin_task_progress_fill"
+                                                t-att-class="getProgressBarClass(item.avg)"
+                                                t-att-style="'width:' + getProgressWidth(item.avg)"
+                                            />
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_task_empty">No project progress yet.</div>
+                    </div>
+
+                    <div class="card o_fin_task_chart_card">
+                        <div class="o_fin_task_card_header">
+                            <h3>Status Distribution</h3>
+                        </div>
+                        <div class="o_fin_task_bar_list">
+                            <t t-set="statusTotal" t-value="getTotal(statusDistributionItems)"/>
+                            <t t-foreach="statusDistributionItems" t-as="item" t-key="item.key">
+                                <div class="o_fin_task_bar_row">
+                                    <span class="o_fin_task_bar_label" t-esc="item.label"/>
+                                    <div class="o_fin_task_bar_track">
+                                        <div
+                                            class="o_fin_task_bar_fill"
+                                            t-att-style="'width:' + getBarWidth(item.value, statusTotal) + ';background:' + item.color"
+                                        />
+                                    </div>
+                                    <span class="o_fin_task_bar_value" t-esc="item.value"/>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                    <div class="card o_fin_task_chart_card">
+                        <div class="o_fin_task_card_header">
+                            <h3>Analytic Distribution</h3>
+                        </div>
+                        <t t-if="analyticDistributionItems.length">
+                            <div class="o_fin_task_donut_wrap">
+                                <div class="o_fin_task_pie" t-att-style="analyticPieStyle"/>
+                                <div class="o_fin_task_legend">
+                                    <t t-set="analyticTotal" t-value="getTotal(analyticDistributionItems)"/>
+                                    <t t-foreach="analyticDistributionItems" t-as="segment" t-key="segment.key">
+                                        <div class="o_fin_task_legend_item">
+                                            <span class="o_fin_task_legend_dot" t-att-style="'background:' + segment.color"/>
+                                            <div>
+                                                <strong t-esc="segment.label"/>
+                                                <span t-esc="segment.value + ' (' + ((segment.value / analyticTotal) * 100).toFixed(1) + '%)'"/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_task_empty">No analytic data yet.</div>
+                    </div>
+                </div>
+
+                <div class="o_fin_task_table_grid">
+                    <div class="card o_fin_task_table_card">
+                        <div class="o_fin_task_card_header">
+                            <h3>Odoo Dashboard: Analytic x Status</h3>
+                            <span t-if="analyticStatusRows.length &gt; 10" class="o_fin_task_card_hint" t-esc="'Showing top 10 of ' + analyticStatusRows.length"/>
+                        </div>
+                        <t t-if="analyticStatusRows.length">
+                            <div class="o_fin_task_table_wrap">
+                                <table class="table table-sm o_fin_task_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Pending</th>
+                                            <th>In Process</th>
+                                            <th>Done</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="analyticStatusRows.slice(0, 10)" t-as="row" t-key="row.label">
+                                            <tr>
+                                                <td class="o_fin_task_table_name" t-esc="row.label"/>
+                                                <td t-esc="formatMatrixCell(row.cells.pending)"/>
+                                                <td t-esc="formatMatrixCell(row.cells.in_process)"/>
+                                                <td t-esc="formatMatrixCell(row.cells.done)"/>
+                                                <td t-esc="row.totalCount ? row.totalCount + ' (' + row.totalAvg.toFixed(1) + '%)' : '-'"/>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_task_empty">No analytic status rows.</div>
+                    </div>
+
+                    <div class="card o_fin_task_table_card">
+                        <div class="o_fin_task_card_header">
+                            <h3>Odoo Matrix: Employee x Status</h3>
+                            <span t-if="employeeStatusRows.length &gt; 10" class="o_fin_task_card_hint" t-esc="'Showing top 10 of ' + employeeStatusRows.length"/>
+                        </div>
+                        <t t-if="employeeStatusRows.length">
+                            <div class="o_fin_task_table_wrap">
+                                <table class="table table-sm o_fin_task_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Pending</th>
+                                            <th>In Process</th>
+                                            <th>Done</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="employeeStatusRows.slice(0, 10)" t-as="row" t-key="row.label">
+                                            <tr>
+                                                <td class="o_fin_task_table_name" t-esc="row.label"/>
+                                                <td t-esc="formatMatrixCell(row.cells.pending)"/>
+                                                <td t-esc="formatMatrixCell(row.cells.in_process)"/>
+                                                <td t-esc="formatMatrixCell(row.cells.done)"/>
+                                                <td t-esc="row.totalCount ? row.totalCount + ' (' + row.totalAvg.toFixed(1) + '%)' : '-'"/>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+                        <div t-else="" class="o_fin_task_empty">No employee status rows.</div>
+                    </div>
+                </div>
+
+                <div class="card o_fin_task_table_card">
+                    <div class="o_fin_task_card_header">
+                        <h3>Odoo Task Details (List)</h3>
+                        <span t-if="state.visibleTasks.length &gt; 20" class="o_fin_task_card_hint" t-esc="'Showing top 20 of ' + state.visibleTasks.length"/>
+                    </div>
+                    <t t-if="visibleTaskRows.length">
+                        <div class="o_fin_task_table_wrap">
+                            <table class="table table-sm o_fin_task_table">
+                                <thead>
+                                    <tr>
+                                        <th>Task</th>
+                                        <th>Analytic</th>
+                                        <th>Assignees</th>
+                                        <th>Status</th>
+                                        <th>Progress</th>
+                                        <th>Due</th>
+                                        <th/>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="visibleTaskRows" t-as="task" t-key="task.id">
+                                        <tr>
+                                            <td class="o_fin_task_table_name" t-esc="task.taskTitle"/>
+                                            <td t-esc="task.analytic"/>
+                                            <td t-esc="task.assignees"/>
+                                            <td>
+                                                <span class="badge rounded-pill" t-att-style="'background:' + task.statusColor" t-esc="task.statusLabel"/>
+                                            </td>
+                                            <td t-esc="task.progress"/>
+                                            <td t-esc="task.dueDate"/>
+                                            <td class="text-end">
+                                                <button class="btn btn-sm btn-outline-primary" t-on-click="() => this.openTask(task.id)">Open</button>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                    <div t-else="" class="o_fin_task_empty">No tasks found.</div>
+                </div>
+
+                <div class="card o_fin_task_visible_card">
+                    <span>Visible Tasks</span>
+                    <strong t-esc="state.visibleTasks.length"/>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
