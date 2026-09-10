@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="premium_wave_homepage" inherit_id="website.homepage" name="Premium Wave V3 Homepage">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="oe_structure pw2-page pw2-patient-page">
+
+                <section class="pw2-hero pw2-reveal" data-name="Hero">
+                    <div class="pw2-hero-media">
+                        <video class="pw2-hero-video" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" poster="/premium_wave_website/static/src/img/lift-hero.webp">
+                            <source src="https://api.sofwave.com/app/uploads/2026/05/Sofwave-Homepage-Video-16X9-H264-2.mp4" type="video/mp4"/>
+                        </video>
+                        <div class="pw2-hero-overlay"></div>
+                    </div>
+                    <div class="container pw2-hero-content">
+                        <div class="row">
+                            <div class="col-lg-7 col-xl-6">
+                                <span class="pw2-eyebrow">Next-generation aesthetic technology</span>
+                                <h1>Reveal your radiant skin.</h1>
+                                <p>Lift, firm and revitalize with a premium non-invasive treatment experience built around comfort and natural-looking results.</p>
+                                <div class="pw2-hero-actions">
+                                    <a class="pw2-button pw2-button-light" href="/find-a-provider">Find a provider <i class="fa fa-arrow-right"/></a>
+                                    <a class="pw2-text-link" href="#pw2-discover">Explore <i class="fa fa-arrow-down"/></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="pw2-video-toggle" type="button" aria-label="Pause hero video"><img src="/premium_wave_website/static/src/img/pause.svg" alt=""/></button>
+                    <div class="pw2-hero-bottom-wave" aria-hidden="true"></div>
+                </section>
+
+                <section id="pw2-discover" class="pw2-section pw2-wave-paper" data-name="Introduction">
+                    <div class="container">
+                        <div class="row justify-content-center text-center">
+                            <div class="col-lg-9 pw2-reveal">
+                                <span class="pw2-kicker">Meet the wave</span>
+                                <h2>A new kind of aesthetic experience.</h2>
+                                <p class="pw2-big-copy">A polished treatment journey with clear education, elegant movement and a visual language designed to feel calm, modern and premium.</p>
+                            </div>
+                        </div>
+                        <div class="row g-4 mt-4">
+                            <div class="col-md-4 pw2-reveal"><article class="pw2-pill-card"><span class="pw2-card-number">01</span><h3>Non-invasive</h3><p>Designed for modern lifestyles with an experience focused on comfort.</p></article></div>
+                            <div class="col-md-4 pw2-reveal pw2-delay-1"><article class="pw2-pill-card"><span class="pw2-card-number">02</span><h3>Clinically focused</h3><p>A strong treatment story built around trust, precision and confidence.</p></article></div>
+                            <div class="col-md-4 pw2-reveal pw2-delay-2"><article class="pw2-pill-card"><span class="pw2-card-number">03</span><h3>Natural feel</h3><p>Clean design and thoughtful messaging keep attention on the patient journey.</p></article></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pw2-section pw2-two-products" data-name="Treatments">
+                    <div class="container">
+                        <div class="row align-items-end mb-5 g-4">
+                            <div class="col-lg-8 pw2-reveal"><span class="pw2-kicker">Two experiences. One philosophy.</span><h2>Technology designed around you.</h2></div>
+                            <div class="col-lg-4 pw2-reveal"><p>Explore distinct treatment stories using the same refined experience and premium visual language.</p></div>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-lg-6 pw2-reveal">
+                                <article class="pw2-product-card">
+                                    <img src="https://api.sofwave.com/app/uploads/2024/10/Sofwave-treatment-video-Patient-page.png" alt="Sofwave treatment" loading="lazy"/>
+                                    <div class="pw2-product-card-body"><span>Sofwave</span><h3>Lift. Tone. Refresh.</h3><p>A refined treatment story for face and skin-focused experiences.</p><a href="#pw3-treatment-explorer">Explore areas <i class="fa fa-arrow-right"/></a></div>
+                                </article>
+                            </div>
+                            <div class="col-lg-6 pw2-reveal pw2-delay-1">
+                                <article class="pw2-product-card">
+                                    <img src="https://api.sofwave.com/app/uploads/2024/10/PI-video.jpg" alt="Pure Impact treatment" loading="lazy"/>
+                                    <div class="pw2-product-card-body"><span>Pure Impact</span><h3>Strength meets aesthetics.</h3><p>A complementary experience for body-focused treatment journeys.</p><a href="/providers">Discover Pure Impact <i class="fa fa-arrow-right"/></a></div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="pw3-treatment-explorer" class="pw3-explorer" data-name="Treatment areas">
+                    <div class="container">
+                        <div class="row g-5 align-items-center">
+                            <div class="col-lg-6 pw2-reveal">
+                                <div class="pw3-figure-card">
+                                    <img src="https://api.sofwave.com/app/uploads/2024/12/Softwave-62-scaled.jpg" alt="Treatment areas" loading="lazy"/>
+                                    <button class="pw3-poi is-active" style="top:19%;left:51%" data-pw3-area="face" type="button" aria-label="Face"><span>+</span></button>
+                                    <button class="pw3-poi" style="top:31%;left:51%" data-pw3-area="neck" type="button" aria-label="Neck"><span>+</span></button>
+                                    <button class="pw3-poi" style="top:50%;left:42%" data-pw3-area="arms" type="button" aria-label="Arms"><span>+</span></button>
+                                    <button class="pw3-poi" style="top:61%;left:53%" data-pw3-area="body" type="button" aria-label="Body"><span>+</span></button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pw2-reveal pw2-delay-1">
+                                <span class="pw2-kicker pw2-kicker-light">Treatment areas</span>
+                                <h2>Explore what’s possible.</h2>
+                                <p>Choose an area to reveal the treatment story. This interaction is built natively in the Odoo theme.</p>
+                                <div class="pw3-area-tabs">
+                                    <button type="button" class="is-active" data-pw3-area="face">Face</button>
+                                    <button type="button" data-pw3-area="neck">Neck</button>
+                                    <button type="button" data-pw3-area="arms">Arms</button>
+                                    <button type="button" data-pw3-area="body">Body</button>
+                                </div>
+                                <div class="pw3-area-panels">
+                                    <div class="pw3-area-panel is-active" data-pw3-panel="face"><span>01</span><h3>Face</h3><p>Create a focused story around lifting, skin quality and a refreshed appearance.</p></div>
+                                    <div class="pw3-area-panel" data-pw3-panel="neck"><span>02</span><h3>Neck</h3><p>Highlight a smooth treatment journey for areas that benefit from a refined approach.</p></div>
+                                    <div class="pw3-area-panel" data-pw3-panel="arms"><span>03</span><h3>Arms</h3><p>Introduce body-focused options with clean education and simple navigation.</p></div>
+                                    <div class="pw3-area-panel" data-pw3-panel="body"><span>04</span><h3>Body</h3><p>Connect visitors to the body treatment experience and provider conversation.</p></div>
+                                </div>
+                                <a href="/contact-us" class="pw2-button pw2-button-cream">Ask about treatment <i class="fa fa-arrow-right"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="pw2-how" class="pw2-dark-feature" data-name="How it works">
+                    <div class="pw2-dark-feature-wave" aria-hidden="true"></div>
+                    <div class="container py-5">
+                        <div class="row align-items-center g-5 py-lg-5">
+                            <div class="col-lg-6 pw2-reveal"><div class="pw2-dark-image-card"><img src="/premium_wave_website/static/src/img/lift-hero.webp" alt="Treatment lifestyle visual" loading="lazy"/></div></div>
+                            <div class="col-lg-6 pw2-reveal pw2-delay-1">
+                                <span class="pw2-kicker pw2-kicker-light">How it works</span><h2>Focused energy. Thoughtful experience.</h2>
+                                <p>Clear visual storytelling explains the journey in simple layers and guides visitors naturally to the next step.</p>
+                                <div class="pw2-step-list">
+                                    <div><strong>01</strong><span><b>Consult</b><small>Begin with goals, expectations and a provider conversation.</small></span></div>
+                                    <div><strong>02</strong><span><b>Treat</b><small>Present the technology in a calm and understandable way.</small></span></div>
+                                    <div><strong>03</strong><span><b>Reveal</b><small>Guide visitors toward results, stories and follow-up.</small></span></div>
+                                </div>
+                                <a href="/contact-us" class="pw2-button pw2-button-cream">Get in touch <i class="fa fa-arrow-right"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pw2-section pw2-results-section" data-name="Before and after">
+                    <div class="container">
+                        <div class="row align-items-center g-5">
+                            <div class="col-lg-5 pw2-reveal">
+                                <span class="pw2-kicker">Before &amp; after</span><h2>See the story side by side.</h2>
+                                <p class="pw2-big-copy">Drag the divider to compare real reference imagery and then explore the full gallery.</p>
+                                <div class="pw2-chip-row"><span class="is-active">Face</span><span>Neck</span><span>Body</span></div>
+                                <a href="/before-after" class="pw2-button pw2-button-navy">View all results <i class="fa fa-arrow-right"/></a>
+                            </div>
+                            <div class="col-lg-7 pw2-reveal pw2-delay-1">
+                                <div class="pw2-before-after" data-pw2-ba="50">
+                                    <img class="pw2-ba-before" src="https://api.sofwave.com/app/uploads/2024/10/before-sofwave-face-treatment-4-by-roy-geronemus-md.jpg" alt="Before" loading="lazy"/>
+                                    <div class="pw2-ba-after-wrap"><img class="pw2-ba-after" src="https://api.sofwave.com/app/uploads/2024/10/after-12-weeks-sofwave-face-treatment-4-by-roy-geronemus-md.jpg" alt="After" loading="lazy"/></div>
+                                    <span class="pw2-ba-label pw2-ba-left">Before</span><span class="pw2-ba-label pw2-ba-right">After</span>
+                                    <div class="pw2-ba-divider"><span><i class="fa fa-arrows-h"/></span></div>
+                                    <input class="pw2-ba-range" type="range" min="0" max="100" value="50" aria-label="Before and after comparison"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pw2-section pw2-benefits" data-name="Benefits">
+                    <div class="container">
+                        <div class="row justify-content-center text-center mb-5"><div class="col-lg-8 pw2-reveal"><span class="pw2-kicker">Why patients love the experience</span><h2>Premium at every touchpoint.</h2></div></div>
+                        <div class="pw2-benefit-grid">
+                            <article class="pw2-benefit pw2-reveal"><i class="fa fa-clock-o"/><h3>Efficient</h3><p>Designed around a modern schedule and a clear next step.</p></article>
+                            <article class="pw2-benefit pw2-reveal pw2-delay-1"><i class="fa fa-shield"/><h3>Trusted</h3><p>Strong visual hierarchy communicates professionalism and confidence.</p></article>
+                            <article class="pw2-benefit pw2-reveal pw2-delay-2"><i class="fa fa-star-o"/><h3>Premium</h3><p>Elegant typography, imagery, curved sections and subtle motion.</p></article>
+                            <article class="pw2-benefit pw2-reveal"><i class="fa fa-heart-o"/><h3>Human</h3><p>A calm experience that keeps the focus on people rather than complexity.</p></article>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pw2-global-section" data-name="Global numbers">
+                    <div class="container"><div class="row align-items-center g-5">
+                        <div class="col-lg-5 pw2-reveal"><span class="pw2-kicker pw2-kicker-light">A global wave</span><h2>Designed to scale.</h2><p>Key-number blocks animate into view and can later be connected to live Odoo records.</p></div>
+                        <div class="col-lg-7"><div class="pw2-number-grid">
+                            <div class="pw2-number pw2-reveal"><strong data-pw2-counter="40" data-pw2-suffix="+">40+</strong><span>Countries</span></div>
+                            <div class="pw2-number pw2-reveal pw2-delay-1"><strong data-pw2-counter="865" data-pw2-suffix="K+">865K+</strong><span>Treatments</span></div>
+                            <div class="pw2-number pw2-reveal pw2-delay-2"><strong data-pw2-counter="9">9</strong><span>Clearances</span></div>
+                            <div class="pw2-number pw2-reveal pw2-delay-3"><strong data-pw2-counter="90" data-pw2-suffix="%">90%</strong><span>Experience score</span></div>
+                        </div></div>
+                    </div></div>
+                </section>
+
+                <section class="pw3-testimonials pw2-section" data-name="Testimonials">
+                    <div class="container">
+                        <div class="row align-items-end mb-5"><div class="col-lg-7 pw2-reveal"><span class="pw2-kicker">Patient stories</span><h2>Confidence, in their own words.</h2></div><div class="col-lg-5 text-lg-end pw2-reveal"><div class="pw3-carousel-nav"><button type="button" data-pw3-quote="prev"><i class="fa fa-arrow-left"/></button><button type="button" data-pw3-quote="next"><i class="fa fa-arrow-right"/></button></div></div></div>
+                        <div class="pw3-quote-stage pw2-reveal">
+                            <article class="pw3-quote is-active"><div class="pw3-quote-image"><img src="https://api.sofwave.com/app/uploads/2024/11/Sofwave-for-patients.png" alt="Patient story" loading="lazy"/></div><div class="pw3-quote-copy"><span>01 / Patient story</span><blockquote>“The experience felt modern, calm and considered from the moment I arrived.”</blockquote><p>Patient story placeholder · replace with customer-approved content.</p></div></article>
+                            <article class="pw3-quote"><div class="pw3-quote-image"><img src="https://api.sofwave.com/app/uploads/2024/12/Softwave-62-scaled.jpg" alt="Patient story" loading="lazy"/></div><div class="pw3-quote-copy"><span>02 / Patient story</span><blockquote>“I wanted something that fit naturally into my routine and felt premium throughout.”</blockquote><p>Patient story placeholder · replace with customer-approved content.</p></div></article>
+                            <article class="pw3-quote"><div class="pw3-quote-image"><img src="/premium_wave_website/static/src/img/lift-about.webp" alt="Patient story" loading="lazy"/></div><div class="pw3-quote-copy"><span>03 / Patient story</span><blockquote>“Clear information made it easy to understand the experience and choose my next step.”</blockquote><p>Patient story placeholder · replace with customer-approved content.</p></div></article>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pw3-journal pw2-section" data-name="Journal">
+                    <div class="container">
+                        <div class="row align-items-end mb-5"><div class="col-lg-8 pw2-reveal"><span class="pw2-kicker">Latest stories</span><h2>Learn, explore, stay inspired.</h2></div><div class="col-lg-4 text-lg-end pw2-reveal"><a href="/blog" class="pw2-button pw2-button-navy">View journal <i class="fa fa-arrow-right"/></a></div></div>
+                        <div class="row g-4">
+                            <div class="col-lg-4 pw2-reveal"><article class="pw3-story-card"><img src="https://api.sofwave.com/app/uploads/2024/12/Softwave-62-scaled.jpg" alt="Article" loading="lazy"/><div><span>Skin &amp; beauty</span><h3>A modern approach to a refreshed look.</h3><a href="/blog">Read story <i class="fa fa-arrow-right"/></a></div></article></div>
+                            <div class="col-lg-4 pw2-reveal pw2-delay-1"><article class="pw3-story-card"><img src="https://api.sofwave.com/app/uploads/2023/12/Body-Sculpting_-Non-Surgical-Techniques-and-Innovative-Approaches-693x1024.jpg" alt="Article" loading="lazy"/><div><span>Body</span><h3>Exploring non-surgical body treatments.</h3><a href="/blog">Read story <i class="fa fa-arrow-right"/></a></div></article></div>
+                            <div class="col-lg-4 pw2-reveal pw2-delay-2"><article class="pw3-story-card"><img src="https://api.sofwave.com/app/uploads/2023/12/Cellulite-on-Legs-–-Can-You-Get-Rid-of-It-693x1024.jpg" alt="Article" loading="lazy"/><div><span>Education</span><h3>What to know before choosing a treatment.</h3><a href="/blog">Read story <i class="fa fa-arrow-right"/></a></div></article></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pw2-final-cta" data-name="Final call to action">
+                    <div class="container pw2-reveal"><div class="pw2-final-inner"><span class="pw2-kicker pw2-kicker-light">Ready to ride the wave?</span><h2>Find the right experience for you.</h2><p>Connect with a provider or speak with the team.</p><div class="d-flex flex-wrap gap-3 justify-content-center"><a href="/find-a-provider" class="pw2-button pw2-button-light">Find a provider <i class="fa fa-arrow-right"/></a><a href="/contact-us" class="pw2-button pw2-button-ghost">Contact us <i class="fa fa-arrow-right"/></a></div></div></div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+</odoo>

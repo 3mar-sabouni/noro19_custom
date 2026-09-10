@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        V3.5 HEADER HOST
+        Odoo 19 applies its selected header template after generic website.layout
+        extensions. Replacing //header directly can therefore be replaced again by
+        website.template_header_default (or another selected Odoo header).
+
+        To keep the accepted Premium Wave menu stable, we leave Odoo's native
+        header in the DOM, hide it with frontend CSS, and mount our independent
+        header immediately before <main>. This works regardless of which Odoo
+        header template is selected in the Website editor.
+    -->
+    <template id="premium_wave_header" inherit_id="website.layout" name="Premium Wave V3.5 Header Host" priority="1000">
+        <xpath expr="//main" position="before">
+            <div t-if="not no_header" class="pw2-site-header pw5-header-host o_not_editable" role="banner" data-name="Premium Wave Header">
+                <div class="pw2-top-ribbon" aria-hidden="true"></div>
+                <nav class="pw2-nav" aria-label="Main navigation">
+                    <div class="container-fluid pw2-nav-inner">
+                        <div class="pw2-audience-switch" aria-label="Audience">
+                            <a href="/" t-attf-class="pw2-switch-link #{'is-active' if request.httprequest.path in ['/', '/patients'] else ''}">Patients</a>
+                            <a href="/providers" t-attf-class="pw2-switch-link #{'is-active' if request.httprequest.path.startswith('/providers') else ''}">Providers</a>
+                        </div>
+
+                        <a class="pw2-logo" href="/" aria-label="Sofwave home">
+                            <img src="/premium_wave_website/static/src/img/sofwave-logo.svg" alt="Sofwave"/>
+                        </a>
+
+                        <div class="pw2-desktop-actions">
+                            <a href="/before-after" class="pw2-nav-pill pw3-results-pill">Before &amp; After</a>
+                            <a href="/about-us" class="pw2-nav-pill">About us</a>
+                            <a href="/find-a-provider" class="pw2-nav-pill">Find a provider</a>
+                            <a href="/contact-us" class="pw2-nav-pill pw2-nav-pill-outline">Contact us</a>
+                        </div>
+
+                        <button type="button" class="pw2-mobile-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="pw4-mobile-menu">
+                            <span></span><span></span><span></span>
+                        </button>
+                    </div>
+
+                    <div id="pw4-mobile-menu" class="pw2-mobile-menu" aria-hidden="true">
+                        <div class="pw4-mobile-menu-inner">
+                            <div class="pw4-mobile-audience" aria-label="Audience">
+                                <a href="/" t-attf-class="pw4-audience-link #{'is-active' if request.httprequest.path in ['/', '/patients'] else ''}">Patients</a>
+                                <a href="/providers" t-attf-class="pw4-audience-link #{'is-active' if request.httprequest.path.startswith('/providers') else ''}">Providers</a>
+                            </div>
+
+                            <div class="pw4-mobile-menu-label">Explore</div>
+                            <div class="pw4-mobile-links" role="menu">
+                                <a href="/before-after" role="menuitem">
+                                    <span>Before &amp; After</span><i class="fa fa-arrow-right"/>
+                                </a>
+                                <a href="/about-us" role="menuitem">
+                                    <span>About us</span><i class="fa fa-arrow-right"/>
+                                </a>
+                                <a href="/find-a-provider" role="menuitem">
+                                    <span>Find a provider</span><i class="fa fa-arrow-right"/>
+                                </a>
+                            </div>
+
+                            <div class="pw4-mobile-menu-bottom">
+                                <a href="/contact-us" class="pw4-mobile-contact">Contact us <i class="fa fa-arrow-right"/></a>
+                                <div class="pw4-mobile-meta">
+                                    <span>Lift. Firm. Revitalize.</span>
+                                    <div class="pw4-mobile-socials">
+                                        <a href="#" aria-label="Instagram"><i class="fa fa-instagram"/></a>
+                                        <a href="#" aria-label="Facebook"><i class="fa fa-facebook"/></a>
+                                        <a href="#" aria-label="YouTube"><i class="fa fa-youtube-play"/></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="premium_wave_footer" inherit_id="website.layout" name="Premium Wave V3 Footer">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo pw2-footer" t-if="not no_footer">
+                <section class="pw2-footer-shell">
+                    <div class="pw2-footer-wave" aria-hidden="true"></div>
+                    <div class="container pw2-footer-content">
+                        <div class="row g-5">
+                            <div class="col-lg-3">
+                                <a href="/" class="pw2-footer-logo"><img src="/premium_wave_website/static/src/img/sofwave-logo.svg" alt="Sofwave"/></a>
+                                <div class="pw2-socials mt-4">
+                                    <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"/></a>
+                                    <a href="#" aria-label="Instagram"><i class="fa fa-instagram"/></a>
+                                    <a href="#" aria-label="TikTok"><span>T</span></a>
+                                    <a href="#" aria-label="Facebook"><i class="fa fa-facebook"/></a>
+                                    <a href="#" aria-label="X"><span>𝕏</span></a>
+                                    <a href="#" aria-label="YouTube"><i class="fa fa-youtube-play"/></a>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-lg-2 offset-lg-1">
+                                <h5>Explore</h5>
+                                <a href="/">Patients</a>
+                                <a href="/providers">Providers</a>
+                                <a href="/before-after">Before &amp; After</a>
+                                <a href="/find-a-provider">Find a provider</a>
+                            </div>
+
+                            <div class="col-6 col-lg-2">
+                                <h5>Company</h5>
+                                <a href="/about-us">About us</a>
+                                <a href="/blog">Blog</a>
+                                <a href="/contact-us">Careers</a>
+                                <a href="/contact-us">Patents</a>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <h4>Stay informed</h4>
+                                <p>Subscribe for the latest product, treatment and company updates.</p>
+                                <form action="/contact-us" method="get" class="pw2-newsletter">
+                                    <input type="email" name="email" placeholder="Email*" aria-label="Email" required="required"/>
+                                    <button type="submit" aria-label="Subscribe"><i class="fa fa-arrow-right"/></button>
+                                </form>
+                                <small>By subscribing, you agree to receive communications and accept the privacy policy.</small>
+                            </div>
+                        </div>
+
+                        <div class="pw2-footer-legal">
+                            <a href="/privacy">Privacy Notice</a>
+                            <a href="/privacy">Cookie Policy</a>
+                            <a href="/terms">Terms &amp; Conditions</a>
+                            <a href="/contact-us">Accessibility</a>
+                            <span class="ms-lg-auto">© <span class="pw2-current-year">2026</span> <span t-esc="website.name or res_company.name"/></span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="premium_wave_floating_contact" inherit_id="website.layout" name="Premium Wave Floating Contact">
+        <xpath expr="//div[@id='wrapwrap']" position="inside">
+            <div class="pw3-chat" t-if="not no_footer">
+                <div class="pw3-chat-panel" aria-hidden="true">
+                    <strong>Hi there!</strong>
+                    <p>How can we help you today?</p>
+                    <a href="/contact-us">Contact our team <i class="fa fa-arrow-right"/></a>
+                    <a href="/find-a-provider">Find a provider <i class="fa fa-map-marker"/></a>
+                </div>
+                <button class="pw3-chat-button" type="button" aria-label="Open quick contact" aria-expanded="false">
+                    <span>Let’s chat!</span><span class="pw3-chat-mark">sw</span>
+                </button>
+            </div>
+        </xpath>
+    </template>
+</odoo>

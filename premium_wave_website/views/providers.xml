@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="providers_page" name="Providers">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure pw2-page pw2-provider-page">
+                <section class="pw2-provider-hero">
+                    <div class="container">
+                        <div class="row align-items-center g-5">
+                            <div class="col-lg-6 pw2-reveal">
+                                <span class="pw2-eyebrow">For providers</span>
+                                <h1>Catch the wave of aesthetic excellence.</h1>
+                                <p>Bring a premium treatment experience to your clinic with a story built around confidence, technology and sustainable growth.</p>
+                                <div class="d-flex flex-wrap gap-3"><a href="/contact-us?audience=provider" class="pw2-button pw2-button-navy">Get in touch <i class="fa fa-arrow-right"/></a><a href="#pw3-provider-benefits" class="pw3-inline-link">Explore the platform <i class="fa fa-arrow-down"/></a></div>
+                            </div>
+                            <div class="col-lg-6 pw2-reveal pw2-delay-1"><div class="pw2-provider-hero-image"><img src="https://api.sofwave.com/app/uploads/2024/10/Sofwave-treatment.jpg" alt="Provider treatment"/></div></div>
+                        </div>
+                    </div>
+                    <div class="pw2-provider-wave" aria-hidden="true"></div>
+                </section>
+
+                <section class="pw2-section pw2-provider-numbers">
+                    <div class="container"><div class="row g-4">
+                        <div class="col-6 col-lg-3 pw2-reveal"><div class="pw2-provider-number"><strong data-pw2-counter="9">9</strong><span>FDA clearances</span></div></div>
+                        <div class="col-6 col-lg-3 pw2-reveal pw2-delay-1"><div class="pw2-provider-number"><strong data-pw2-counter="90" data-pw2-suffix="%">90%</strong><span>Patient satisfaction</span></div></div>
+                        <div class="col-6 col-lg-3 pw2-reveal pw2-delay-2"><div class="pw2-provider-number"><strong data-pw2-counter="40" data-pw2-suffix="+">40+</strong><span>Countries</span></div></div>
+                        <div class="col-6 col-lg-3 pw2-reveal pw2-delay-3"><div class="pw2-provider-number"><strong data-pw2-counter="865" data-pw2-suffix="K+">865K+</strong><span>Treatments</span></div></div>
+                    </div></div>
+                </section>
+
+                <section class="pw2-section pw2-provider-tech">
+                    <div class="container">
+                        <div class="row align-items-end mb-5"><div class="col-lg-8 pw2-reveal"><span class="pw2-kicker">Treatment portfolio</span><h2>Two technologies. One premium ecosystem.</h2></div></div>
+                        <div class="row g-4">
+                            <div class="col-lg-6 pw2-reveal"><article class="pw2-tech-panel"><img src="https://api.sofwave.com/app/uploads/2024/10/Sofwave-treatment.jpg" alt="Sofwave"/><div><span class="pw2-kicker">Sofwave</span><h2>It’s not just ultrasound.</h2><p>Create a strong clinical story around a clean, modern presentation.</p><a href="/contact-us?audience=provider">Learn more <i class="fa fa-arrow-right"/></a></div></article></div>
+                            <div class="col-lg-6 pw2-reveal pw2-delay-1"><article class="pw2-tech-panel"><img src="https://api.sofwave.com/app/uploads/2024/10/PI-treatment7.jpg" alt="Pure Impact"/><div><span class="pw2-kicker">Pure Impact</span><h2>Expand the experience.</h2><p>A complementary technology story with the same premium, professional visual language.</p><a href="/contact-us?audience=provider">Learn more <i class="fa fa-arrow-right"/></a></div></article></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="pw3-provider-benefits" class="pw3-provider-benefits pw2-section">
+                    <div class="container">
+                        <div class="row mb-5"><div class="col-lg-8 pw2-reveal"><span class="pw2-kicker">Built for modern clinics</span><h2>Clinical value meets business value.</h2></div></div>
+                        <div class="pw3-provider-grid">
+                            <article class="pw3-provider-benefit pw2-reveal"><span>01</span><i class="fa fa-line-chart"/><h3>Practice growth</h3><p>Position treatments with a premium digital experience built to convert interest into consultations.</p></article>
+                            <article class="pw3-provider-benefit pw2-reveal pw2-delay-1"><span>02</span><i class="fa fa-users"/><h3>Patient demand</h3><p>Clear education and strong results storytelling help patients understand the treatment journey.</p></article>
+                            <article class="pw3-provider-benefit pw2-reveal pw2-delay-2"><span>03</span><i class="fa fa-graduation-cap"/><h3>Education</h3><p>Organize clinical education, resources and launch material in a structured provider experience.</p></article>
+                            <article class="pw3-provider-benefit pw2-reveal"><span>04</span><i class="fa fa-bullhorn"/><h3>Marketing support</h3><p>Campaign assets, promotional toolkits and brand guidance can live directly inside Odoo.</p></article>
+                            <article class="pw3-provider-benefit pw2-reveal pw2-delay-1"><span>05</span><i class="fa fa-star"/><h3>Premium positioning</h3><p>A consistent design system across provider, patient and contact journeys.</p></article>
+                            <article class="pw3-provider-benefit pw2-reveal pw2-delay-2"><span>06</span><i class="fa fa-comments"/><h3>Dedicated support</h3><p>Make it easy for clinics to request information and connect with the right team.</p></article>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pw2-provider-support">
+                    <div class="container"><div class="row align-items-center g-5">
+                        <div class="col-lg-6 pw2-reveal"><img class="pw2-support-image" src="https://api.sofwave.com/app/uploads/2024/11/Support-devices2-e1730379996654.jpg" alt="Provider support"/></div>
+                        <div class="col-lg-6 pw2-reveal pw2-delay-1"><span class="pw2-kicker pw2-kicker-light">Our commitment starts here</span><h2>Support built for growth.</h2><div class="pw2-support-list"><div><span>01</span><p>World-class marketing tools and customized education.</p></div><div><span>02</span><p>Loyalty programs designed for you and your patients.</p></div><div><span>03</span><p>Promotional toolkits to launch and grow your offering.</p></div><div><span>04</span><p>A resource hub and dedicated development support.</p></div></div><a href="/contact-us?audience=provider" class="pw2-button pw2-button-cream">Talk to our team <i class="fa fa-arrow-right"/></a></div>
+                    </div></div>
+                </section>
+
+                <section class="pw3-provider-quote pw2-section">
+                    <div class="container"><div class="row g-5 align-items-center">
+                        <div class="col-lg-5 pw2-reveal"><div class="pw3-provider-quote-image"><img src="https://api.sofwave.com/app/uploads/2024/12/Softwave-62-scaled.jpg" alt="Provider testimonial"/></div></div>
+                        <div class="col-lg-7 pw2-reveal pw2-delay-1"><span class="pw2-kicker">Trusted by leading clinics</span><blockquote>“The strongest provider experience combines results, education and support in one clear story.”</blockquote><p>Provider testimonial placeholder · replace with customer-approved content.</p><div class="pw3-carousel-nav"><button type="button"><i class="fa fa-arrow-left"/></button><button type="button"><i class="fa fa-arrow-right"/></button></div></div>
+                    </div></div>
+                </section>
+
+                <section class="pw3-webinar-band">
+                    <div class="container"><div class="pw3-webinar-card pw2-reveal"><div><span class="pw2-kicker pw2-kicker-light">Provider education</span><h2>Watch. Learn. Grow.</h2><p>Use this section for webinars, demonstrations, clinical education and launch events.</p></div><a href="/contact-us?audience=provider" class="pw2-button pw2-button-light">Request a demo <i class="fa fa-arrow-right"/></a></div></div>
+                </section>
+
+                <section class="pw2-section pw2-provider-trust"><div class="container text-center"><div class="row justify-content-center"><div class="col-lg-8 pw2-reveal"><span class="pw2-kicker">Trusted worldwide</span><h2>Ready to bring the wave to your clinic?</h2><p class="pw2-big-copy">Connect with the provider team and continue the conversation.</p><a href="/contact-us?audience=provider" class="pw2-button pw2-button-navy">Request information <i class="fa fa-arrow-right"/></a></div></div></div></section>
+            </div>
+        </t>
+    </template>
+</odoo>

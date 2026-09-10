@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="find_provider_page" name="Find a Provider">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure pw2-page pw2-finder-page">
+                <section class="pw2-finder-hero"><div class="container text-center"><span class="pw2-kicker">Find a provider</span><h1>Start your journey nearby.</h1><p>Search by city, practice or postcode.</p><div class="pw2-finder-search"><i class="fa fa-map-marker"/><input id="pw3-provider-search" type="text" placeholder="City, practice or postcode" aria-label="Search providers"/><button id="pw3-provider-search-button" type="button">Search <i class="fa fa-arrow-right"/></button></div></div></section>
+                <section class="pw3-finder-main pw2-section"><div class="container-fluid px-lg-5"><div class="row g-4">
+                    <div class="col-lg-5"><div class="pw3-finder-heading"><span class="pw2-kicker">Nearby providers</span><h2><span id="pw3-provider-count">6</span> clinics found</h2></div><div id="pw3-provider-list" class="pw3-provider-list">
+                        <article class="pw3-clinic-row" data-search="premium aesthetics clinic central london w1"><div><span>Featured clinic</span><h3>Premium Aesthetics Clinic</h3><p><i class="fa fa-map-marker"/> Central London · W1</p><p><i class="fa fa-phone"/> +44 20 0000 0001</p></div><a href="/contact-us">View clinic <i class="fa fa-arrow-right"/></a></article>
+                        <article class="pw3-clinic-row" data-search="skin wellness studio manchester m1"><div><span>Featured clinic</span><h3>Skin &amp; Wellness Studio</h3><p><i class="fa fa-map-marker"/> Manchester · M1</p><p><i class="fa fa-phone"/> +44 16 1000 0002</p></div><a href="/contact-us">View clinic <i class="fa fa-arrow-right"/></a></article>
+                        <article class="pw3-clinic-row" data-search="modern dermatology birmingham b1"><div><span>Clinic</span><h3>Modern Dermatology</h3><p><i class="fa fa-map-marker"/> Birmingham · B1</p><p><i class="fa fa-phone"/> +44 12 1000 0003</p></div><a href="/contact-us">View clinic <i class="fa fa-arrow-right"/></a></article>
+                        <article class="pw3-clinic-row" data-search="the skin rooms leeds ls1"><div><span>Clinic</span><h3>The Skin Rooms</h3><p><i class="fa fa-map-marker"/> Leeds · LS1</p><p><i class="fa fa-phone"/> +44 11 3000 0004</p></div><a href="/contact-us">View clinic <i class="fa fa-arrow-right"/></a></article>
+                        <article class="pw3-clinic-row" data-search="aesthetic house glasgow g1"><div><span>Clinic</span><h3>Aesthetic House</h3><p><i class="fa fa-map-marker"/> Glasgow · G1</p><p><i class="fa fa-phone"/> +44 14 1000 0005</p></div><a href="/contact-us">View clinic <i class="fa fa-arrow-right"/></a></article>
+                        <article class="pw3-clinic-row" data-search="derma collective bristol bs1"><div><span>Clinic</span><h3>Derma Collective</h3><p><i class="fa fa-map-marker"/> Bristol · BS1</p><p><i class="fa fa-phone"/> +44 11 7000 0006</p></div><a href="/contact-us">View clinic <i class="fa fa-arrow-right"/></a></article>
+                        <div id="pw3-provider-empty" class="pw3-empty-state"><i class="fa fa-search"/><h3>No clinic found</h3><p>Try another city, clinic name or postcode.</p></div>
+                    </div></div>
+                    <div class="col-lg-7"><div class="pw3-map-placeholder"><div class="pw3-map-grid"></div><span class="pw3-map-pin pin-1"><i class="fa fa-map-marker"/></span><span class="pw3-map-pin pin-2"><i class="fa fa-map-marker"/></span><span class="pw3-map-pin pin-3"><i class="fa fa-map-marker"/></span><div class="pw3-map-card"><strong>Provider map</strong><p>V3 includes the full map-style layout. A real Google Maps / Mapbox connection can be added next.</p></div></div></div>
+                </div></div></section>
+            </div>
+        </t>
+    </template>
+</odoo>

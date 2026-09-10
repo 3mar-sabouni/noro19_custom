@@ -1,0 +1,150 @@
+/* ================================================================
+   V3.5 — ODOO NATIVE HEADER GUARD
+   Odoo 19 can re-apply website.template_header_default after a custom
+   website.layout extension. The native #top header stays in the DOM for
+   editor compatibility, but is never rendered on this dedicated website.
+   The Premium Wave header is mounted independently before <main>.
+   ================================================================ */
+#wrapwrap > header#top,
+#wrapwrap header#top {
+    display: none !important;
+}
+
+.pw5-header-host {
+    display: block !important;
+}
+
+/* ================================================================
+   V3.4 — SAFE MOBILE CONTENT FIX
+   IMPORTANT: this file intentionally does NOT style the V3.2 mobile
+   navigation. The accepted V3.2 mobile menu remains the source of truth.
+   These rules only keep page content inside narrow mobile viewports.
+   ================================================================ */
+
+@media (max-width: 767.98px) {
+    /* Bootstrap columns may contain flex/grid children with intrinsic widths.
+       min-width: 0 lets those children shrink without changing .row sizing. */
+    .pw2-page .row > [class*="col"],
+    .pw2-page .row > [class^="col"],
+    .pw2-page .d-flex > *,
+    .pw2-page [class*="grid"] > * {
+        min-width: 0;
+    }
+
+    /* Keep editorial text inside its own column. Do not apply overflow to the
+       page/root/header because that can interfere with the fixed mobile menu. */
+    .pw2-page h1,
+    .pw2-page h2,
+    .pw2-page h3,
+    .pw2-page h4,
+    .pw2-page h5,
+    .pw2-page h6,
+    .pw2-page p,
+    .pw2-page blockquote,
+    .pw2-page .pw2-big-copy,
+    .pw2-page .pw3-large-paragraph {
+        max-width: 100%;
+        white-space: normal !important;
+        overflow-wrap: break-word;
+    }
+
+    /* A slightly tighter mobile type scale keeps long Sofwave-style headings
+       elegant in Odoo's ~390px phone preview instead of clipping at the edge. */
+    .pw2-page h1 {
+        font-size: clamp(40px, 10.8vw, 52px);
+        line-height: .98;
+        letter-spacing: -.04em;
+    }
+
+    .pw2-page h2 {
+        font-size: clamp(34px, 9.2vw, 43px);
+        line-height: 1.04;
+        letter-spacing: -.035em;
+    }
+
+    .pw2-page h3 {
+        font-size: clamp(24px, 6.4vw, 28px);
+    }
+
+    /* The centered introduction was the clearest clipping case in the Odoo
+       phone preview. Keep it centered while guaranteeing a safe text width. */
+    .pw2-wave-paper .row.justify-content-center > [class*="col"] {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .pw2-wave-paper h2 {
+        max-width: 11.5em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Forms / filter bars / cards that can otherwise create intrinsic width. */
+    .pw2-finder-search,
+    .pw3-contact-tabs,
+    .pw3-quote-copy,
+    .pw3-contact-copy,
+    .pw3-contact-form-card,
+    .pw3-webinar-card,
+    .pw3-clinic-row,
+    .pw3-map-card {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .pw2-finder-search input {
+        flex: 1 1 180px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .pw2-page img,
+    .pw2-page video,
+    .pw2-page iframe,
+    .pw2-page svg {
+        max-width: 100%;
+    }
+
+    .pw2-page .pw2-button,
+    .pw2-page .pw3-inline-link {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .pw2-page h1 {
+        font-size: clamp(38px, 10.4vw, 46px);
+    }
+
+    .pw2-page h2 {
+        font-size: clamp(32px, 8.7vw, 38px);
+        line-height: 1.06;
+    }
+
+    .pw2-wave-paper h2 {
+        max-width: 10.8em;
+    }
+
+    /* Long translated labels should wrap instead of forcing horizontal width. */
+    .pw2-page h1,
+    .pw2-page h2,
+    .pw2-page h3,
+    .pw2-page .pw2-button,
+    .pw2-page .pw3-inline-link {
+        overflow-wrap: anywhere;
+    }
+}
+
+/* Menu safety guard: preserve the accepted V3.2 navigation behavior even if
+   another website stylesheet later adds generic mobile display rules. */
+@media (max-width: 991.98px) {
+    .pw2-site-header .pw2-mobile-toggle {
+        display: flex;
+    }
+
+    .pw2-site-header .pw2-mobile-menu {
+        display: block;
+    }
+}

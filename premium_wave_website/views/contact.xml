@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="contact_page" name="Contact Us">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure pw2-page pw3-contact-page">
+                <section class="pw3-contact-shell"><div class="container"><div class="row g-5 align-items-stretch">
+                    <div class="col-lg-5 pw2-reveal"><div class="pw3-contact-visual"><img src="https://api.sofwave.com/app/uploads/2024/09/image-5.jpg" alt="Contact Sofwave"/><div class="pw3-contact-copy"><span class="pw2-kicker pw2-kicker-light">Let’s talk</span><h1>Where can the wave take you?</h1><p>Tell us whether you are looking for treatment information or bringing the technology to your clinic.</p></div></div></div>
+                    <div class="col-lg-7 pw2-reveal pw2-delay-1"><div class="pw3-contact-form-card">
+                        <t t-if="sent"><div class="pw3-success"><i class="fa fa-check"/><div><strong>Thank you.</strong><p>Your prototype form was submitted successfully.</p></div></div></t>
+                        <span class="pw2-kicker">Contact us</span><h2>Start the conversation.</h2>
+                        <div class="pw3-contact-tabs"><button type="button" t-attf-class="#{'is-active' if audience != 'provider' else ''}" data-pw3-contact="patient">I’m a patient</button><button type="button" t-attf-class="#{'is-active' if audience == 'provider' else ''}" data-pw3-contact="provider">I’m a provider</button></div>
+                        <form action="/contact-us" method="get" class="pw3-contact-form">
+                            <input type="hidden" name="sent" value="1"/>
+                            <input id="pw3-audience-value" type="hidden" name="audience" t-att-value="audience"/>
+                            <div class="row g-3"><div class="col-md-6"><label>First name*</label><input type="text" name="first_name" required="required"/></div><div class="col-md-6"><label>Last name*</label><input type="text" name="last_name" required="required"/></div><div class="col-md-6"><label>Email*</label><input type="email" name="email" required="required"/></div><div class="col-md-6"><label>Phone</label><input type="tel" name="phone"/></div><div class="col-md-6 pw3-provider-only"><label>Practice / clinic</label><input type="text" name="clinic"/></div><div class="col-md-6 pw3-provider-only"><label>Role</label><input type="text" name="role"/></div><div class="col-12"><label>Message*</label><textarea name="message" rows="5" required="required"></textarea></div><div class="col-12"><label class="pw3-check"><input type="checkbox" required="required"/><span>I agree to be contacted about this enquiry.</span></label></div><div class="col-12"><button class="pw2-button pw2-button-navy" type="submit">Send enquiry <i class="fa fa-arrow-right"/></button></div></div>
+                        </form>
+                    </div></div>
+                </div></div></section>
+                <section class="pw3-faq pw2-section"><div class="container"><div class="row g-5"><div class="col-lg-4 pw2-reveal"><span class="pw2-kicker">Quick answers</span><h2>Before you reach out.</h2></div><div class="col-lg-8 pw2-reveal pw2-delay-1"><div class="pw3-accordion"><article><button type="button"><span>How do I find a treatment provider?</span><i class="fa fa-plus"/></button><div><p>Use the provider finder to search by city, practice or postcode.</p></div></article><article><button type="button"><span>Can clinics request provider information?</span><i class="fa fa-plus"/></button><div><p>Yes. Select “I’m a provider” above to show the provider-specific enquiry fields.</p></div></article><article><button type="button"><span>Can this form create Odoo CRM leads?</span><i class="fa fa-plus"/></button><div><p>Yes. The visual form is complete in V3; CRM lead creation can be connected in the next backend phase.</p></div></article></div></div></div></div></section>
+            </div>
+        </t>
+    </template>
+</odoo>
